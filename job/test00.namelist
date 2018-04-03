@@ -1,0 +1,6 @@
+&data00 Total_nloop =  4000 /
+&data01 Avs_nskip   =  2000,          Avs_tag = 'test00_avs' /
+&data02 Slicedata_nskip  = 100, Slicedata_tag = 'test00_slice' /
+&data03 Viscosity = 0.0001 /
+&data04     Kappa = 0.0001 /
+&data05 Debug = .false. /

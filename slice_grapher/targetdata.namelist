@@ -1,0 +1,2 @@
+&data00 Target_nloop = 5000 /
+&data01 Slicedata_filename = '../code/_data_slice' /

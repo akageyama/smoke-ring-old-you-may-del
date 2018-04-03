@@ -1,0 +1,30 @@
+2008-06-04  Akira Kageyama  <kage@jamstec.go.jp>
+
+	* Makefile: For the endian diff vector.scitec and scalar.scitec.
+	> FC = pgf90
+	> FFLAGS = -byteswapio
+
+	* This is for the Simulation School at Kobe held at the week
+	  starting from 2008.06.09.
+
+	* This is fluidbox/grapher. I'll use turtle module for slice data plot.
+
+2005-11-23  Akira Kageyama  <kage@jamstec.go.jp>
+
+	* << turtle >> 
+	---------------------------------------------------------------
+	- Basic draw library. 
+	- You can draw points, lines (curves), contours, and vector arrows
+	  in 2-d cartesian and polar coordinates.
+	- The outuput is text data of (x,y) positions. It is supposed that
+	  you use gnuplot, for example, to get the figure output from
+	  this text data file. See 'turtle.gp' for an example script 
+	  for gnuplot.
+	---------------------------------------------------------------
+
+	* turtle.f90: Development finished!
+
+2005-11-22  Akira Kageyama  <kage@jamstec.go.jp>
+
+	* turtle.f90: Development started.
+

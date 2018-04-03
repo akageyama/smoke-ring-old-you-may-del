@@ -1,0 +1,86 @@
+
+BoxFluid: A 3D Fluid Solver by FDM in Cartesian Geometry.
+
+Author: Akira Kageyama
+        Earth Simulator Center, JAMSTEC, Japan
+
+Email address: kage@jamstec.go.jp
+
+Date: 2008.06.04 (ver.01)
+
+
+This code is developed for the Simulation School held at Kobe 
+in the week starting from 2008.06.09.
+
+I hope this code is helpful for you, our students.
+
+
+
+Physical and numerical models:
+
+- The target fluid is an ideal gas.
+- Normalization: p = rho T
+- Geometry: 3-D rectangular box.
+- Boundary condition: Periodic in all directions.
+- 2nd-order finite difference method for the spatial derivative.
+- 4th-order Runge-Kutta method for time integration.
+
+
+Input:
+
+- See 'sample.namelist'.
+
+Output:
+
+- AVS field data (time sequence). Use AVS/Express to analyze these.
+- Slice data (also time sequence). You need special analyzer for this.
+- These data are saved in files in the current directory.
+- You can control file names, such as '_data_avs.000.fld' etc. See sample.namelist
+
+
+Directory structure:
+
+Under /home/users/kage/Lecture/2008/080609_SimSchool/src,
+     BoxFluid/code
+     BoxFluid/doc
+     BoxFluid/slice_grapher
+     BoxFluid/job_vector
+
+
+
+
+Usage:
+
+To submit to vector.scitec.kobe-u.ac.jp:
+(1) cd Lecture/2008/080609_SimSchool/src/BoxFluid/job_vector
+(2) Follow the instruction in README file.
+
+
+To submit to scalar.scitec.kobe-u.ac.jp:
+(1) cd Lecture/2008/080609_SimSchool/src/BoxFluid/job_scalar
+(2) Follow the instruction in README file.
+
+
+
+To analyze the output data:
+
+- For 2-D slice plane visualizaiton: 
+Follow the README in Lecture/2008/080609_SimSchool/src/BoxFluid/slice_grapher.
+
+
+- For 3-D slice plane visualizaiton: 
+- Use AVS/Express for *.fld files in 
+  Lecture/2008/080609_SimSchool/src/BoxFluid/job_vector or .../job_scalar.
+
+
+
+
+For your experiments:
+
+
+- Change "Viscosity" in the input data (namelist).
+- Change grid size (NX,NY,NZ) in code/constants.f90
+- Change the external driving force in code/solver.f90.
+      - THE_FORCE value
+      - Region of the driving force in 'set_drive_force_field'.
+- Put another force source region to make a pair of colliding rings.

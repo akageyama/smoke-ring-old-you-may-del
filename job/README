@@ -1,0 +1,7 @@
+
+See ../doc/README for more detail.
+
+(1) ./compile.sh
+(2) edit input data named *.namelist, e.g., test00.namelist.
+(3) check submit.sh (check the cd target).
+(4) qsub submmi.sh

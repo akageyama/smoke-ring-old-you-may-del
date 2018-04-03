@@ -1,0 +1,22 @@
+#
+# boxfluid/grapher
+#    by Akira Kageyama (kage@jamstec.go.jp)
+#    on 2008.06.04
+#   for Simulation School at Kobe
+#
+#   Revised on 2008.06.07
+#    - added gif animation converter.
+#
+
+(0) login to scalar.scitec.kobe-u.ac.jp.
+(1) check grid size (NX,NY,NZ) in constants.f90
+(2) Edit target.f90
+(3) Check FFLAGS in Makefile
+(4) make nloop_list.txt
+(5) Edit nloop_list.txt to reduce the target figure nloops.
+(6) make plot_data_generator
+(7) make figs
+(8) check the directory 'Workfiles'. Eps files should be there.
+(9) make gif
+
+  
