@@ -1,0 +1,235 @@
+#!/usr/bin/ruby
+#
+#  avsdatalib_generator.rb
+#
+#     Purpose: To generate avsdatalib.f90 to stdout.
+#      Author: Akira Kageyama (kage@jamstec.go.jp)
+#
+#=========================================================
+#
+#  Usage: 
+#         (1) Change avsveclen, maximum number of fields.
+#         (2) ./avsdatalib_generator.rb > avsdatalib.f90
+#
+#=========================================================
+#     
+#  History: 2008.06.04: ver.1.0.
+#
+#
+
+avsveclen = 7   #  Maximum number of fields (1 <= avsveclen <= 99).
+
+print <<"EOB"
+!-----------------------------------------------------------------------------
+! This code is written by a code generator.
+!
+EOB
+
+puts("!      generator : " + __FILE__)
+puts("!   generated on : " + Time.now.to_s)
+puts("!      avsveclen : " + avsveclen.to_s)
+
+print <<"EOB"
+!
+!-----------------------------------------------------------------------------
+
+module avsdatalib
+!*****************************************************************************
+! MODULE AVSDATALIB                 A Generator of AVS-Field Data File (*.fld)
+!*****************************************************************************
+  !___________________________________________________________________________
+  !
+  ! 2008.06.04  by Akira Kageyama (ESC) kage@jamstec.go.jp
+  !   - Code generator.
+  !   - Renamed gavs ==> avsdatalib
+  !
+  ! 2003.05.21  by Akira Kageyama (ESC)
+  !   - Removed 'target_dir' funcion, for ES use.
+  !   - Separated the gavs__fld routine into two part:
+  !     for coordinate data and field data.
+  !
+  ! 2003.02.06  by Akira Kageyama (ESC)
+  !   - Added ids4avs; removed IDS_TEMP (no more problem for ids=77).
+  !   - Renamed makeAVs --> gavs.
+  !
+  ! 2003.02.04  by Akira Kageyama (ESC)
+  !   makeAvs.f90
+  !     I converted old f77maf-lib.f into fortran90 version.
+  !     In the old version, you had to call a companion shell script.
+  !     In this new version, everything is done as a f90 program. 
+  !
+  ! 1995.02.04  by Kageyama, Akira (NIFS)
+  !   f77maf
+  !     To make an AVS-field data file from a fortran code.
+  !     
+  !---------------------------------------------------------------------------
+  ! Usage:
+  !    call avsdatalib__coord(IDS_FOR_AVS,                      &
+  !                           tag_coord,                        &
+  !                           nr, nt, np,                       &
+  !                           coord%x, coord%y, coord%z)
+  !
+  !    call avsdatalib__fld(IDS_FOR_AVS,                        &
+  !                         tag_coord,                          &
+  !                         tag_fld,                            &
+  !                         nr, nt, np,                         &
+  !                         data_avs_vel%x, 'vx',               &
+  !                         data_avs_vel%y, 'vy',               &
+  !                         data_avs_vel%z, 'vz',               &
+  !                         data_avs_mag%x, 'bx',               &
+  !                         data_avs_mag%y, 'by',               &
+  !                         data_avs_mag%z, 'bz')
+  !__________________________________________________________________________/
+  !
+  use constants, only: SP
+  implicit none
+  private
+  public :: avsdatalib__coord,  &
+            avsdatalib__fld
+
+
+EOB
+
+puts("  interface avsdatalib__fld")
+(1..avsveclen).each{|i|
+  num = sprintf("%02d",i)
+  puts("    module procedure avs" + num + "f")
+}
+puts("  end interface")
+
+
+print <<"EOB"
+
+
+contains
+
+
+!===============
+!    Private    
+!===============
+
+
+EOB
+  
+
+(1..avsveclen).each{|i|
+  num = sprintf("%02d",i)
+  puts("")
+  puts("  !" + "_"*70 )
+  puts("  !" + " "*70 + "!")
+  puts("  subroutine avs" + num + "f(ids4avs,      &" + " "*38 + "!" )
+  puts("                    tag_coord,    &" + " "*38 + "!")
+  puts("                    tag_fld,      &" + " "*38 + "!")
+  puts("                    n1, n2, n3,   &" + " "*38 + "!")
+  (1..i).each{|j|
+    n = sprintf("%02d",j)
+    comma = ( i==j ? ' ' : ',' )
+    puts("                    vec"+n+", lab"+n+comma+" &"+" "*38 + "!")
+  }
+  puts("                    )" + " "*52 + "!")
+  puts("  !" + "_"*70 + "!")
+  puts("  !")
+  puts("    integer, intent(in) :: ids4avs")
+  puts("    character(len=*), intent(in) :: tag_coord, tag_fld")
+  puts("    integer, intent(in) :: n1, n2, n3")
+  (1..i).each{|j|
+    n = sprintf("%02d",j)
+    puts("    real(SP), dimension(n1,n2,n3), intent(in) :: vec" + n)
+  }
+  (1..i).each{|j|
+    n = sprintf("%02d",j)
+    puts("    character(len=*), intent(in) :: lab" + n)
+  }
+  puts("  !" + "_"*70 + "/")
+  puts("  !")
+  puts("    integer :: nvec = " + i.to_s )
+  puts("")
+  (1..i).each{|j|
+    n = sprintf("%02d",j)
+    string = "    call write_3d_data(ids4avs,n1,n2,n3,tag_fld//'.'//lab"
+    puts(string + n + ", vec" + n + ")")
+  }
+  puts("")
+  puts("    open(ids4avs,file=tag_fld//'.fld',form='formatted')")
+  puts("      write(ids4avs,'(a)')     '# AVS field data, generated by " \
+                                      + "avsdatalib.'")
+  puts("      write(ids4avs,'(a)')     '#'")
+  puts("      write(ids4avs,'(a,i5)')  'ndim = ', 3")
+  puts("      write(ids4avs,'(a,i5)')  'dim1 = ', n1")
+  puts("      write(ids4avs,'(a,i5)')  'dim2 = ', n2")
+  puts("      write(ids4avs,'(a,i5)')  'dim3 = ', n3")
+  puts("      write(ids4avs,'(a,i5)')  'nspace = ', 3")
+  puts("      write(ids4avs,'(a,i5)')  'veclen = ', nvec")
+  puts("      write(ids4avs,'(a)')     'data = float'")
+  puts("      write(ids4avs,'(a)')     'field = irregular'")
+  (1..i).each{|j|
+    n = sprintf("%02d",j)
+    puts("      write(ids4avs,'(a)')     'label = '//lab" + n )
+  }
+  puts("      write(ids4avs,'(a)')     '#'")
+  puts("      write(ids4avs,'(a)')  &")
+  puts("        'coord 1 file='//tag_coord//'.x filetype=unformatted'")
+  puts("      write(ids4avs,'(a)')  &")
+  puts("        'coord 2 file='//tag_coord//'.y filetype=unformatted'")
+  puts("      write(ids4avs,'(a)')  &")
+  puts("        'coord 3 file='//tag_coord//'.z filetype=unformatted'")
+  puts("      write(ids4avs,'(a)')     '#'")
+  (1..i).each{|j|
+    n = sprintf("%02d",j)
+    puts("      write(ids4avs,'(a)')  &")
+    puts("        'variable " + j.to_s + " file='//tag_fld//'.'//lab" + n \
+                + "//' filetype=unformatted'")
+  }
+  puts("    close(ids4avs)")
+  puts("")
+  puts("  end subroutine avs" + num + "f")
+  puts("")
+}
+
+print <<"EOB"
+    
+
+  !______________________________________________________________________
+  !                                                                      !
+  subroutine write_3d_data(ids4avs,n1,n2,n3,file_name,data)              !
+  !______________________________________________________________________!
+  !
+    integer, intent(in) :: ids4avs
+    integer, intent(in) :: n1, n2, n3
+    character(len=*), intent(in) :: file_name
+    real(SP), dimension(n1,n2,n3), intent(in) :: data
+  !______________________________________________________________________/
+  !
+    open(ids4avs,file=file_name,form='unformatted')
+       write(ids4avs) data
+    close(ids4avs)
+
+  end subroutine write_3d_data
+
+
+!==============
+!    Public    
+!==============
+
+
+  !______________________________________________________________________
+  !                                                                      !
+  subroutine avsdatalib__coord(ids4avs, tag_coord,      &                !
+                               n1, n2, n3,              &                !
+                               x, y, z)                                  !
+  !______________________________________________________________________!
+  !
+    integer, intent(in) :: ids4avs
+    character(len=*), intent(in) :: tag_coord
+    integer, intent(in) :: n1, n2, n3
+    real(SP), dimension(n1,n2,n3), intent(in) :: x, y, z
+  !______________________________________________________________________/
+  !
+    call write_3d_data(ids4avs, n1, n2, n3, tag_coord//'.x', x)
+    call write_3d_data(ids4avs, n1, n2, n3, tag_coord//'.y', y)
+    call write_3d_data(ids4avs, n1, n2, n3, tag_coord//'.z', z)
+
+  end subroutine avsdatalib__coord
+
+end module avsdatalib
+EOB

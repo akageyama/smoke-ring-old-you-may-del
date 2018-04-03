@@ -1,0 +1,8 @@
+&data00 Total_nloop = 20000 /
+&data01 Avs_nskip   =  2000,           Avs_tag = '_data_avs' /
+&data02 Slicedata_nskip  = 100, Slicedata_tag = '_data_slice' /
+! &data03 Viscosity = 0.00005 /   ! works fine when NX*NY*NZ=152*52*52
+! &data04     Kappa = 0.00005 /   ! works fine when NX*NY*NZ=152*52*52
+&data03 Viscosity = 0.01 /   ! works fine when NX*NY*NZ=152*52*52
+&data04     Kappa = 0.01 /   ! works fine when NX*NY*NZ=152*52*52
+&data05 Debug = .false. /
