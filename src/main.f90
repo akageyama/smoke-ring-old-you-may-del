@@ -32,7 +32,7 @@ program main
   real(DP) :: dt, time
 
   type(field__fluid_) :: fluid
-  
+
   call namelist__read
   call grid__initialize
   call solver__initialize(fluid)

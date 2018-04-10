@@ -48,19 +48,19 @@ module grid
   real(DP) :: grid__delta_min
 
   type(grid__delta_) :: grid__delta
-  
+
   type grid__derivative_operator_1st_
      real(DP) :: x, y, z
   end type grid__derivative_operator_1st_
-  
+
   type(grid__derivative_operator_1st_) :: grid__d1
 
   type grid__derivative_operator_2nd_
      real(DP) :: x, y, z
   end type grid__derivative_operator_2nd_
-  
+
   type(grid__derivative_operator_2nd_) :: grid__d2
-  
+
 
 contains
 

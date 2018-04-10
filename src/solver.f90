@@ -113,7 +113,7 @@ contains
 
     real(DP), parameter :: THE_FORCE = 0.02_DP 
                                      ! Find proper value by trials & erros.
-    
+
     !________________________________________________________________
     !
     !     +--------------------------------------+ ZMAX
@@ -162,7 +162,7 @@ contains
                     "<solver/set_drive_force_field> something is strange.")
 
     call debug__message("called solver/set_drive_force_field.")
-    
+
   end subroutine set_drive_force_field
 
 
@@ -225,7 +225,7 @@ contains
     type(field__fluid_) :: the_equation                                  !
 !________________________________________________________________________!
 !
-!  Here we ignore the viscous heating term in the presssure equation.      
+!  Here we ignore the viscous heating term in the presssure equation.
 !________________________________________________________________________/
 !
     integer :: i, j, k
@@ -236,13 +236,13 @@ contains
     real(DP) :: lapvx, lapvy, lapvz, laptm
     real(DP) :: divf
     real(DP) :: factor
-    
+
     call ut__assert(Initialize_done, "<solver/the_equation> Forgot init?")
 
     factor = drive_force_factor(t)
 
     !_______________________________________________________________
-    !                                                              
+    !
     ! Since the following do-loops are the most time consuming
     ! part in this simulation, we do not use fancy operators
     ! such as .div., to make the optimization easy.
@@ -475,7 +475,7 @@ contains
                                       .energyintegral.fluid)
     call ut__message('#total mass: ',  nloop, time,                     &
                                       .scalarintegral.(fluid%density))
-       
+
     call debug__message('called solver__diagnosis.')
 
   end subroutine solver__diagnosis
@@ -496,10 +496,10 @@ contains
     Gamma1_kappa = (Gamma-1)*kappa
 
     !<< Initial condition of the fluid >>!
-    fluid%pressure = 1.0_DP      
+    fluid%pressure = 1.0_DP
     fluid%density  = 1.0_DP      ! uniform p, T, and rho.
     fluid%flux     = 0.0_DP      ! no flow at t=0
-    
+
     !<< Define drive force field >>!
     call set_drive_force_field
 
