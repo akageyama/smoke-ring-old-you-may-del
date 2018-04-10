@@ -7,7 +7,7 @@
 !                                              Earth Simulator Center, JAMSTEC
 !-----------------------------------------------------------------------------
 ! debug.f90
-!     2008.06.02: Created by Akira Kageyama.
+!     2008.06.02: Developed by Akira Kageyama.
 !-----------------------------------------------------------------------------
 
 module debug

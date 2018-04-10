@@ -7,7 +7,7 @@
 !                                              Earth Simulator Center, JAMSTEC
 !-----------------------------------------------------------------------------
 ! solver.f90
-!     2008.06.02: Created by Akira Kageyama. Copied from kindanb/rk4.f90.
+!     2008.06.02: Developed by Akira Kageyama. Copied from kindanb/rk4.f90.
 !-----------------------------------------------------------------------------
 
 module solver

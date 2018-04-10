@@ -4,7 +4,7 @@
 !     This code is developed for Simulation School at Kobe on 2008.06.09.
 !-----------------------------------------------------------------------------
 ! constants.f90
-!     2008.06.02: Created by Akira Kageyama. Copied from kindanb.
+!     2008.06.02: Developed by Akira Kageyama. Copied from kindanb.
 !-----------------------------------------------------------------------------
 
 module constants

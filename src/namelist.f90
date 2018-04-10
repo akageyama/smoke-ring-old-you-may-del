@@ -7,7 +7,7 @@
 !                                              Earth Simulator Center, JAMSTEC
 !-----------------------------------------------------------------------------
 ! namelist.f90
-!     2008.06.02: Created by Akira Kageyama. Copied from kindanb.
+!     2008.06.02: Developed by Akira Kageyama. Copied from kindanb.
 !-----------------------------------------------------------------------------
 
 module namelist

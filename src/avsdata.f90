@@ -8,7 +8,7 @@
 !-----------------------------------------------------------------------------
 ! avsdata.f90
 !     2008.06.04: gavs ==> avsdatalib
-!     2008.06.03: Created by Akira Kageyama. Copied from kindanb.
+!     2008.06.03: Developed by Akira Kageyama. Copied from kindanb.
 !-----------------------------------------------------------------------------
 
 module avsdata

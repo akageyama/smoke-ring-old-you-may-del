@@ -7,7 +7,7 @@
 !                                              Earth Simulator Center, JAMSTEC
 !-----------------------------------------------------------------------------
 ! main.f90
-!     2008.06.02: Created by Akira Kageyama. kage@jamstec.go.jp.
+!     2008.06.02: Developed by Akira Kageyama. kage@jamstec.go.jp.
 !-----------------------------------------------------------------------------
 
 program main
