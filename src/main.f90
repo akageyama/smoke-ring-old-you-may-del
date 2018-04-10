@@ -1,20 +1,26 @@
 !-----------------------------------------------------------------------------
-! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
-!
-!     This code is developed for Simulation School at Kobe on 2008.06.09.
-!
-!                                           Akira Kageyama, kage@jamstec.go.jp
-!                                              Earth Simulator Center, JAMSTEC
-!-----------------------------------------------------------------------------
-! main.f90
-!     2008.06.02: Developed by Akira Kageyama. kage@jamstec.go.jp.
-!-----------------------------------------------------------------------------
+! Box-Fluid
+!  - A simple CFD code for educations.
+!  - Compressible Navier-Stokes equations for the ideal gas.
+!  - Periodic boundary conditions in all directions.
+!!-----------------------------------------------------------------------------
+!! Old comments follows:
+!! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
+!!
+!!     This code is developed for Simulation School at Kobe on 2008.06.09.
+!!
+!!                                           Akira Kageyama, kage@jamstec.go.jp
+!!                                              Earth Simulator Center, JAMSTEC
+!!-----------------------------------------------------------------------------
+!! main.f90
+!!     2008.06.02: Developed by Akira Kageyama. kage@jamstec.go.jp.
+!!-----------------------------------------------------------------------------
 
 program main
 !=============================================================================
 ! PROGAM MAIN                 FLUIDBOX: A simple sample 3D fluid solver by FDM
 !=============================================================================
-  !                                        Akira Kageyama (kage@jamstec.go.jp)
+  !                                    Akira Kageyama (kage@port.kobe-u.ac.jp)
   !---------------------------------------------------------------------------
   use constants             !                              numerical constants
   use ut                    !                                utility functions
