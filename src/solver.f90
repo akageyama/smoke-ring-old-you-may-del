@@ -1,13 +1,14 @@
 !-----------------------------------------------------------------------------
-! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
+! smoke-ring: A simple 3-D Fluid Solver by FDM on Cartesian Grid.
 !
-!     This code is developed for Simulation School at Kobe on 2008.06.09.
-!
-!                                           Akira Kageyama, kage@jamstec.go.jp
-!                                              Earth Simulator Center, JAMSTEC
+!    by Akira Kageyama,
+!       Department of Computational Science,
+!       Kobe University, Japan.
+!       email: kage@port.kobe-u.ac.jp or sgks@mac.com
 !-----------------------------------------------------------------------------
 ! solver.f90
 !     2008.06.02: Developed by Akira Kageyama. Copied from kindanb/rk4.f90.
+!     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
 module solver

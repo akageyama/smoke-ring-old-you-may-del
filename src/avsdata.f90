@@ -1,14 +1,15 @@
 !-----------------------------------------------------------------------------
-! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
+! smoke-ring: A simple 3-D Fluid Solver by FDM on Cartesian Grid.
 !
-!     This code is developed for Simulation School at Kobe on 2008.06.09.
-!
-!                                           Akira Kageyama, kage@jamstec.go.jp
-!                                              Earth Simulator Center, JAMSTEC
+!    by Akira Kageyama,
+!       Department of Computational Science,
+!       Kobe University, Japan.
+!       email: kage@port.kobe-u.ac.jp or sgks@mac.com
 !-----------------------------------------------------------------------------
 ! avsdata.f90
 !     2008.06.04: gavs ==> avsdatalib
 !     2008.06.03: Developed by Akira Kageyama. Copied from kindanb.
+!     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
 module avsdata

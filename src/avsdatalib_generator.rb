@@ -3,7 +3,7 @@
 #  avsdatalib_generator.rb
 #
 #     Purpose: To generate avsdatalib.f90 to stdout.
-#      Author: Akira Kageyama (kage@jamstec.go.jp)
+#      Author: Akira Kageyama (kage@port.kobe-u.ac.jp)
 #
 #=========================================================
 #
@@ -12,7 +12,7 @@
 #         (2) ./avsdatalib_generator.rb > avsdatalib.f90
 #
 #=========================================================
-#     
+#
 #  History: 2008.06.04: ver.1.0.
 #
 #

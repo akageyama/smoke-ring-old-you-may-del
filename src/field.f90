@@ -1,13 +1,14 @@
 !-----------------------------------------------------------------------------
-! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
+! smoke-ring: A simple 3-D Fluid Solver by FDM on Cartesian Grid.
 !
-!     This code is developed for Simulation School at Kobe on 2008.06.09.
-!
-!                                           Akira Kageyama, kage@jamstec.go.jp
-!                                              Earth Simulator Center, JAMSTEC
+!    by Akira Kageyama,
+!       Department of Computational Science,
+!       Kobe University, Japan.
+!       email: kage@port.kobe-u.ac.jp or sgks@mac.com
 !-----------------------------------------------------------------------------
 ! field.f90
 !     2008.06.02: Developed by Akira Kageyama. Copied from kindanb.
+!     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
 module field
@@ -64,7 +65,7 @@ module field
      real(DP), dimension(NX,NY,NZ) :: density   ! mass density
      type(field__vector3d_)        :: flux      ! mass flux
   end type field__fluid_
-  
+
   !--- << Operators >> ---!
 
   interface operator(.curl.)
@@ -138,7 +139,7 @@ contains
 !_______________________________________________________________private__
 !                                                                        !
   subroutine assignment_real_to_fluid(fluid,real)                        !
-    type(field__fluid_), intent(out) :: fluid                            !  
+    type(field__fluid_), intent(out) :: fluid                            !
     real(DP),            intent(in)  :: real                             !
 !________________________________________________________________________!
 !
@@ -154,7 +155,7 @@ contains
 !_______________________________________________________________private__
 !                                                                        !
   subroutine assignment_real_to_vector(vector,real)                      !
-    type(field__vector3d_), intent(out) :: vector                        ! 
+    type(field__vector3d_), intent(out) :: vector                        !
     real(DP),               intent(in)  :: real                          !
 !________________________________________________________________________!
 !

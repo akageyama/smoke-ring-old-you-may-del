@@ -1,5 +1,12 @@
 !-----------------------------------------------------------------------------
-! Box-Fluid
+! smoke-ring: A simple 3-D Fluid Solver by FDM on Cartesian Grid.
+!
+!    by Akira Kageyama,
+!       Department of Computational Science,
+!       Kobe University, Japan.
+!       email: kage@port.kobe-u.ac.jp or sgks@mac.com
+!-----------------------------------------------------------------------------
+!
 !  - A simple CFD code for educational purposes.
 !
 !  - It solves compressible Navier-Stokes equations for an ideal gas under
@@ -9,7 +16,7 @@
 !    region near an end of the box to drive the fluid to flow towrard the 
 !    other end of the box. The well-known smoke ring will be formed.
 !
-!  - Developed by Akira Kageyama, Kobe Univ. (kage@port.kobe-u.ac.jp)
+!-----------------------------------------------------------------------------
 !
 ! Old comments follows:
 !

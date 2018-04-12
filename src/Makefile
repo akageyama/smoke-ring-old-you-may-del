@@ -1,8 +1,8 @@
 #
-# Makefile for fluidbox.
+# Makefile for smoke-ring.
 #
-#     Akira Kageyama (kage@jamstec.go.jp)
-#            2008.06.03 for Simulation School at Kobe.
+#     Akira Kageyama (kage@port.kobe-u.ac.jp)
+#            2018.04.12: Copied from boxfluid.
 #
 
 .SUFFIXES:
