@@ -1,15 +1,15 @@
 #
 # Makefile for analyzier of kindanb
-#   Created by:  Akira Kageyama (kage@jamstec.go.jp)
+#   Created by:  Akira Kageyama (kage@port.kobe-u.ac.jp)
 #           on:  2008.06.04
-#          for:  Simulation School at Kobe
+#   revised on: 2018.04.12 for smoke-ring.
 #
 
 .SUFFIXES:
 .SUFFIXES: .f90 .o
 
 # FC = pgf90
-FC = ifort
+FC = gfortran
 
 # When you simulate on the machine vector (SX-8R), you need this.
 # FFLAGS = -byteswapio
