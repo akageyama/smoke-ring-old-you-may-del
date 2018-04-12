@@ -1,5 +1,5 @@
 !-----------------------------------------------------------------------------
-! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
+! BOX-FLUID: 3D Fluid Solver by FDM in Cartesian Geometry.
 !
 !     This code is developed for Simulation School at Kobe on 2008.06.09.
 !

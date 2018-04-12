@@ -3,10 +3,11 @@
 !  - A simple CFD code for educational purposes.
 !
 !  - It solves compressible Navier-Stokes equations for an ideal gas under
-!    the periodic boundary conditions in all (three) directions. An external
-!    force is applied in a local region near an end of the box to drive the
-!    fluid to flow towrard the other end of the box. The well-known smoke
-!    ring will be formed.
+!    the periodic boundary conditions in all (three) directions.
+!
+!  - In the original setting, an external force is applied in a local
+!    region near an end of the box to drive the fluid to flow towrard the 
+!    other end of the box. The well-known smoke ring will be formed.
 !
 !  - Developed by Akira Kageyama, Kobe Univ. (kage@port.kobe-u.ac.jp)
 !
@@ -60,8 +61,7 @@ program main
 
   dt = solver__set_time_step(nloop,fluid)
 
-  do while(karte==KARTE_FINE)
-                               ; call debug__message("running. nloop = ", nloop)
+  do while(karte==KARTE_FINE)  ; call debug__message("running. nloop=",nloop)
      call solver__advance(time,dt,fluid)
      dt = solver__set_time_step(nloop,fluid)
      nloop = nloop + 1
