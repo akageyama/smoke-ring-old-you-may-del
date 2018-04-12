@@ -1,10 +1,18 @@
 !-----------------------------------------------------------------------------
 ! Box-Fluid
-!  - A simple CFD code for educations.
-!  - Compressible Navier-Stokes equations for the ideal gas.
-!  - Periodic boundary conditions in all directions.
+!  - A simple CFD code for educational purposes.
+!
+!  - It solves compressible Navier-Stokes equations for an ideal gas under
+!    the periodic boundary conditions in all (three) directions. An external
+!    force is applied in a local region near an end of the box to drive the
+!    fluid to flow towrard the other end of the box. The well-known smoke
+!    ring will be formed.
+!
+!  - Developed by Akira Kageyama, Kobe Univ. (kage@port.kobe-u.ac.jp)
+!
+! Old comments follows:
+!
 !!-----------------------------------------------------------------------------
-!! Old comments follows:
 !! FLUIDBOX: 3D Fluid Solver by FDM in Cartesian Geometry.
 !!
 !!     This code is developed for Simulation School at Kobe on 2008.06.09.
@@ -18,7 +26,7 @@
 
 program main
 !=============================================================================
-! PROGAM MAIN                 FLUIDBOX: A simple sample 3D fluid solver by FDM
+! PROGAM MAIN                BOX-FLUID: A simple sample 3D fluid solver by FDM
 !=============================================================================
   !                                    Akira Kageyama (kage@port.kobe-u.ac.jp)
   !---------------------------------------------------------------------------
