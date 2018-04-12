@@ -56,7 +56,7 @@ contains
     real(DP) :: namelist__double                                         !
 !________________________________________________________________________!
 !
-    call ut__assert(Read_done,                                          &
+    call ut__assert(Read_done, &
                     '<namelist__double> Read namelist file first.')
 
     select case (variable)
@@ -79,7 +79,7 @@ contains
     integer :: namelist__integer                                         !
 !________________________________________________________________________!
 !
-    call ut__assert(Read_done,                                          &
+    call ut__assert(Read_done, &
                     '<namelist__integer> Read namelist file first.')
 
     select case (variable)
@@ -104,7 +104,7 @@ contains
     logical :: namelist__logical                                         !
 !________________________________________________________________________!
 !
-    call ut__assert(Read_done,                                          &
+    call ut__assert(Read_done, &
                     '<namelist__logical> Read namelist file first.')
 
     select case (variable)
@@ -150,7 +150,7 @@ contains
     character(len=TAG_STRING_LENGTH_MAX) :: namelist__string             !
 !________________________________________________________________________!
 !
-    call ut__assert(Read_done,                                          &
+    call ut__assert(Read_done, &
                     '<namelist__string> Read namelist file first.')
 
     select case         (variable)
