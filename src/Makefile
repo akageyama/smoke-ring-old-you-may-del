@@ -11,7 +11,7 @@
 #-------------------------------------------------#
 # FC = f90
 # FC = g95
-FC = ifort
+FC = gfortran
 # FC = sxf90 
 #-------------------------------------------------#
 # DEBUG_FLAGS = -Rb -Rc -Rs
@@ -43,11 +43,11 @@ OBJS = 	constants.o 		\
 	solver.o		\
 	main.o
 
-# data: fluidbox sample.namelist
-# 	./fluidbox < sample.namelist
+# data: smoke-ring sample.namelist
+# 	./smoke-ring < sample.namelist
 
-fluidbox: main.o
-	$(FC) $(FFLAGS) $(DEBUG_FLAGS) -o fluidbox ${OBJS} ${FLIB}
+smoke-ring: main.o
+	$(FC) $(FFLAGS) $(DEBUG_FLAGS) -o smoke-ring ${OBJS} ${FLIB}
 
 grid.o: constants.o debug.o ut.o
 ut.o: constants.o
@@ -75,5 +75,5 @@ main.o: constants.o		\
 	solver.o
 
 clean:
-	rm -f fluidbox core ${OBJS} *.mod *.L
+	rm -f smoke-ring core ${OBJS} *.mod *.L
 	rm -f _data_slice* _data_avs*
