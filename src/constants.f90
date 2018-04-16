@@ -43,9 +43,9 @@ module constants
   integer, parameter :: FILE_SLICEDATA    = 51
 
   ! << Grid Size >>
-  integer, parameter :: NX =  22
-  integer, parameter :: NY =  12
-  integer, parameter :: NZ =  12
+  integer, parameter :: NX =  62
+  integer, parameter :: NY =  22
+  integer, parameter :: NZ =  22
   !- integer, parameter :: NX = 152
   !- integer, parameter :: NY =  52
   !- integer, parameter :: NZ =  52
