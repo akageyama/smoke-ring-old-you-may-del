@@ -2,7 +2,7 @@
 ! This code is written by a code generator.
 !
 !      generator : ./avsdatalib_generator.rb
-!   generated on : 2018-04-12 17:01:47 +0900
+!   generated on : 2018-04-17 16:00:32 +0900
 !      avsveclen : 7
 !
 !-----------------------------------------------------------------------------

@@ -11,7 +11,8 @@
 #-------------------------------------------------#
 # FC = f90
 # FC = g95
-FC = gfortran
+# FC = gfortran
+FC = ifort
 # FC = sxf90 
 #-------------------------------------------------#
 # DEBUG_FLAGS = -Rb -Rc -Rs
@@ -21,7 +22,7 @@ DEBUG_FLAGS =
 # FFLAGS = -P auto
 # FFLAGS = +check=all
 # FFLAGS = -R2
-FFLAGS =
+FFLAGS = -O3 -xAVX # for vizfront, serial
 #-------------------------------------------------#
 FLIB =
 #-------------------------------------------------
