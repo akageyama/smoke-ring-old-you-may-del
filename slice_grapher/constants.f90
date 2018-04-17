@@ -36,9 +36,9 @@ module constants
   integer, parameter      :: FILE_FOR_TURTLE   = 70
 
   ! << Grid Size >>
-  integer, parameter      :: NX = 62
-  integer, parameter      :: NY = 22
-  integer, parameter      :: NZ = 22
+  integer, parameter      :: NX = 92
+  integer, parameter      :: NY = 32
+  integer, parameter      :: NZ = 32
   !- integer, parameter      :: NX = 152
   !- integer, parameter      :: NY =  52
   !- integer, parameter      :: NZ =  52

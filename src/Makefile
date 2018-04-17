@@ -11,8 +11,8 @@
 #-------------------------------------------------#
 # FC = f90
 # FC = g95
-# FC = gfortran
-FC = ifort
+FC = gfortran
+# FC = ifort
 # FC = sxf90 
 #-------------------------------------------------#
 # DEBUG_FLAGS = -Rb -Rc -Rs
@@ -22,7 +22,7 @@ DEBUG_FLAGS =
 # FFLAGS = -P auto
 # FFLAGS = +check=all
 # FFLAGS = -R2
-FFLAGS = -O3 -xAVX # for vizfront, serial
+# FFLAGS = -O3 -xAVX # for vizfront, serial
 #-------------------------------------------------#
 FLIB =
 #-------------------------------------------------
@@ -44,11 +44,11 @@ OBJS = 	constants.o 		\
 	solver.o		\
 	main.o
 
-# data: smoke-ring sample.namelist
-# 	./smoke-ring < sample.namelist
-
 smoke-ring: main.o
 	$(FC) $(FFLAGS) $(DEBUG_FLAGS) -o smoke-ring ${OBJS} ${FLIB}
+
+data: smoke-ring sample.namelist
+	./smoke-ring < sample.namelist
 
 grid.o: constants.o debug.o ut.o
 ut.o: constants.o

@@ -43,12 +43,12 @@ module constants
   integer, parameter :: FILE_SLICEDATA    = 51
 
   ! << Grid Size >>
-  integer, parameter :: NX =  62
-  integer, parameter :: NY =  22
-  integer, parameter :: NZ =  22
-  !- integer, parameter :: NX = 152
-  !- integer, parameter :: NY =  52
-  !- integer, parameter :: NZ =  52
+  integer, parameter :: NX =  92
+  integer, parameter :: NY =  32
+  integer, parameter :: NZ =  32
+  ! integer, parameter :: NX = 152
+  ! integer, parameter :: NY =  52
+  ! integer, parameter :: NZ =  52
 
   ! << Box Size >>
   real(DP), parameter :: XMIN = -1.5_DP
