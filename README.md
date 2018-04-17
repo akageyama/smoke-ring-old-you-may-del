@@ -2,6 +2,21 @@
 A simple CFD code to solve a smoke ring formation and propagation
 in a gas contained in a rectangular box. This is for education.
 
+## Usage (on iMac)
+
+    cd src
+    make
+    make data
+    cd ../slice_grapher
+    make figs
+    open Workfiles/*.eps
+
+## Parameters
+
+- Change (NX,NY,NZ) in src/constants.f90 and slice_grapher/constants.f90
+- Change values in src/sample.namelist
+    
+
 ## Basic equation
 
 Compressible Navier-Stokes equations for an ideal gas.
