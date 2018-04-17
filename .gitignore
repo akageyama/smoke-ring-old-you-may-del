@@ -1,6 +1,7 @@
 *.o
 *.mod
 *~
-fluidbox
+smoke-ring
+avsdatalib.f90
 
 
