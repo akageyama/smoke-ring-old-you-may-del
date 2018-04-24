@@ -8,14 +8,15 @@ in a gas contained in a rectangular box. This is for education.
     make
     make data
     cd ../slice_grapher
-    make figs
-    open Workfiles/*.eps
+    make
+    make gif
+    make view
 
 ## Parameters
 
 - Change (NX,NY,NZ) in src/constants.f90 and slice_grapher/constants.f90
 - Change values in src/sample.namelist
-    
+
 
 ## Basic equation
 
