@@ -58,6 +58,10 @@ plot_data_generator: gnuplot_data_generator.o
 gif:
 	./epsconv.csh
 
+view:
+	open -a Safari Workfiles/animation.gif
+
+
 
 gnuplot_data_generator.o: constants.o ut.o grid.o turtle.o target.o
 
