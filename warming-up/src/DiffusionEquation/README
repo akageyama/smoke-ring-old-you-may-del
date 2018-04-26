@@ -1,0 +1,15 @@
+!-----------------------------------------------------------------------------
+! 200708_LesHouches/src/DiffusionEquation
+!                                       Akira Kageyama
+!                                       kage@jamstec.go.jp
+!                                       Earth Simulator Center, JAMSTEC, Japan
+!-----------------------------------------------------------------------------
+! README
+!              2007.07.20: Created by Akira Kageyama
+!-----------------------------------------------------------------------------
+
+
+0. edit sample.namelist, if you want.
+1. make data  (or just type 'make')
+2. make plotscript
+3. make graph

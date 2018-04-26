@@ -1,0 +1,16 @@
+!-----------------------------------------------------------------------------
+! 200708_LesHouches/src/DiffusionEquation
+!                                       Akira Kageyama
+!                                       kage@jamstec.go.jp
+!                                       Earth Simulator Center, JAMSTEC, Japan
+!-----------------------------------------------------------------------------
+! sample.namelist
+!              2007.07.20: Created by Akira Kageyama
+!-----------------------------------------------------------------------------
+!
+!     Critical CFL condition = 0.696323
+!     Observe the numerical divergence at Cfl_factor = 0.705
+!
+&data00 Nx = 100 /
+&data01 Cfl_factor = 0.5,  Diffusion_coeff = 1.0 /
+&data02 Filename = 'output.data' /

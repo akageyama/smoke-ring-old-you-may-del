@@ -1,0 +1,13 @@
+!-----------------------------------------------------------------------------
+! 200708_LesHouches/src/BurgersEquation
+!                                       Akira Kageyama
+!                                       kage@jamstec.go.jp
+!                                       Earth Simulator Center, JAMSTEC, Japan
+!-----------------------------------------------------------------------------
+! sample.namelist
+!              2007.07.20: Created by Akira Kageyama
+!-----------------------------------------------------------------------------
+!
+&data00 Nx = 100 /
+&data01 Cfl_factor = 0.2, Diffusion_coeff = 0.02 /
+&data02 Filename = 'output.data' /
