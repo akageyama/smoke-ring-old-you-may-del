@@ -23,7 +23,7 @@ module field
   private :: &!<< assignments >>!&
              assignment_real_to_fluid,           &
              assignment_real_to_vector
-  private :: &!<< operators >>!&
+  public  :: &!<< operators >>!&
              operator_cross_product,             &
              operator_curl,                      &
              operator_div,                       &
@@ -68,59 +68,59 @@ module field
 
   !--- << Operators >> ---!
 
-  interface operator(.curl.)
-     module procedure operator_curl
-  end interface
-
-  interface operator(.div.)
-     module procedure operator_div
-  end interface
-
-  interface operator(.energyintegral.)
-     module procedure operator_energyintegral
-  end interface
-
-  interface operator(.scalarintegral.)
-     module procedure operator_scalarintegral
-  end interface
-
-  interface operator(.laplacian.)
-     module procedure operator_laplacian_scalar
-     module procedure operator_laplacian_vector
-  end interface
-
-  interface operator(.x.)
-     module procedure operator_cross_product
-  end interface
-
-  interface operator(.dot.)
-     module procedure operator_dot_product
-  end interface
-
-  interface operator(+)
-     module procedure operator_fluid_add
-     module procedure operator_vector_add
-  end interface
-
-  interface operator(/)
-     module procedure operator_vector_divby_scalar
-  end interface
-
-  interface operator(*)
-     module procedure operator_integer_times_fluid
-     module procedure operator_fluid_times_integer
-     module procedure operator_fluid_times_real
-     module procedure operator_real_times_fluid
-     module procedure operator_real_times_vector
-     module procedure operator_scalar_times_vector
-     module procedure operator_vector_times_real
-     module procedure operator_vector_times_scalar
-  end interface
-
-  interface assignment(=)
-     module procedure assignment_real_to_fluid
-     module procedure assignment_real_to_vector
-  end interface
+! interface operator(.curl.)
+!    module procedure operator_curl
+! end interface
+!
+! interface operator(.div.)
+!    module procedure operator_div
+! end interface
+!
+! interface operator(.energyintegral.)
+!    module procedure operator_energyintegral
+! end interface
+!
+! interface operator(.scalarintegral.)
+!    module procedure operator_scalarintegral
+! end interface
+!
+! interface operator(.laplacian.)
+!    module procedure operator_laplacian_scalar
+!    module procedure operator_laplacian_vector
+! end interface
+!
+! interface operator(.x.)
+!    module procedure operator_cross_product
+! end interface
+!
+! interface operator(.dot.)
+!    module procedure operator_dot_product
+! end interface
+!
+! interface operator(+)
+!    module procedure operator_fluid_add
+!    module procedure operator_vector_add
+! end interface
+!
+! interface operator(/)
+!    module procedure operator_vector_divby_scalar
+! end interface
+!
+! interface operator(*)
+!    module procedure operator_integer_times_fluid
+!    module procedure operator_fluid_times_integer
+!    module procedure operator_fluid_times_real
+!    module procedure operator_real_times_fluid
+!    module procedure operator_real_times_vector
+!    module procedure operator_scalar_times_vector
+!    module procedure operator_vector_times_real
+!    module procedure operator_vector_times_scalar
+! end interface
+!
+! interface assignment(=)
+!    module procedure assignment_real_to_fluid
+!    module procedure assignment_real_to_vector
+! end interface
 
 
 contains
@@ -331,7 +331,8 @@ contains
          !  Here we suppose that the grid spacings are uniform.
          !_______________________________________________________/
 
-    flux_sq = (a%flux).dot.(a%flux)
+!   flux_sq = (a%flux).dot.(a%flux)
+    flux_sq = operator_dot_product(a%flux,a%flux)
 
     operator_energyintegral                                      &
          = 0.5_DP * sum(    flux_sq(2:NX-1,2:NY-1,2:NZ-1)        &

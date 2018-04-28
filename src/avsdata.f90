@@ -66,8 +66,10 @@ contains
     type(field__vector3d_)        :: vor   ! vorticity
     real(DP), dimension(NX,NY,NZ) :: enstrophy
 
-          vor = .curl.vel
-    enstrophy = vor.dot.vor
+!>        vor = .curl.vel
+!>  enstrophy = vor.dot.vor
+          vor = operator_curl(vel)
+    enstrophy = operator_dot_product(vor,vor)
 
     Avs_vx = real(    vel%x,SP)
     Avs_vy = real(    vel%y,SP)

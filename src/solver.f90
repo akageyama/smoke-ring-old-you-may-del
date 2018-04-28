@@ -174,7 +174,8 @@ contains
     type(field__vector3d_), intent(out) :: vel                           !
 !________________________________________________________________________!
 !
-    vel = fluid%flux / fluid%density     ! operator defined in field.
+!>  vel = fluid%flux / fluid%density     ! operator defined in field.
+    vel = operator_vector_divby_scalar(fluid%flux, fluid%density)
 
     call debug__message("called solver/subfield_vel.")
 
@@ -189,7 +190,8 @@ contains
     real(DP), dimension(NX,NY,NZ), intent(out) :: tm                     !
 !________________________________________________________________________!
 !
-     vel = fluid%flux     / fluid%density ! operator defined in field.f90.
+!>   vel = fluid%flux     / fluid%density ! operator defined in field.f90.
+     vel = operator_vector_divby_scalar(fluid%flux, fluid%density)
       tm = fluid%pressure / fluid%density
 
     call debug__message("called solver/subfield_vel_tm.")
@@ -206,9 +208,11 @@ contains
     real(DP), dimension(NX,NY,NZ), intent(out) :: divv                   !
 !________________________________________________________________________!
 !
-     vel = fluid%flux     / fluid%density ! operator defined in field.f90.
+!>   vel = fluid%flux     / fluid%density ! operator defined in field.f90.
+     vel = operator_vector_divby_scalar(fluid%flux, fluid%density)
       tm = fluid%pressure / fluid%density
-    divv = .div.vel
+!>  divv = .div.vel
+    divv = operator_div(vel)
 
     call debug__message("called solver/subfield_vel_tm_divv.")
 
@@ -354,6 +358,7 @@ contains
 !________________________________________________________________________/
 !
     real(DP), parameter :: ONE_SIXTH = 1.0_DP / 6.0_DP
+    real(DP), parameter :: ONE_THIRD = 1.0_DP / 3.0_DP
 
     type(field__vector3d_)        :: vel
     real(DP), dimension(NX,NY,NZ) :: tm
@@ -372,7 +377,10 @@ contains
 
     t = t + dt/2
     !--< step 2 >--!
-    gluid = fluid + dfluid01*0.5_DP
+!>  gluid = fluid + dfluid01*0.5_DP
+    dfluid01 = operator_fluid_times_real(dfluid01,0.5_DP)
+    gluid    = operator_fluid_add(fluid,dfluid01)
+
     call subfield_vel_tm_divv(gluid,vel,tm,divv)
     dfluid02 = the_equation(t, dt,                                      &
                             vel%x, vel%y, vel%z, tm, divv,              &
@@ -380,7 +388,10 @@ contains
                             gluid%pressure)
 
     !--< step 3 >--!
-    gluid = fluid + dfluid02*0.5_DP
+!>  gluid = fluid + dfluid02*0.5_DP
+    dfluid02 = operator_fluid_times_real(dfluid02,0.5_DP)
+    gluid    = operator_fluid_add(fluid,dfluid02)
+
     call subfield_vel_tm_divv(gluid,vel,tm,divv)
     dfluid03 = the_equation(t, dt,                                      &
                             vel%x, vel%y, vel%z, tm, divv,              &
@@ -389,7 +400,9 @@ contains
 
     t = t + dt/2
     !--< step 4 >--!
-    gluid = fluid + dfluid03
+!>  gluid = fluid + dfluid03
+    gluid = operator_fluid_add(fluid,dfluid03)
+
     call subfield_vel_tm_divv(gluid,vel,tm,divv)
     dfluid04 = the_equation(t, dt,                                      &
                             vel%x, vel%y, vel%z, tm, divv,              &
@@ -398,9 +411,16 @@ contains
 
     !--< resuts >--!
 
-    fluid = fluid                                                       &
-          + ONE_SIXTH*( dfluid01 + 2*dfluid02 + 2*dfluid03 + dfluid04 )
-
+!>  fluid = fluid                                                       &
+!>        + ONE_SIXTH*( dfluid01 + 2*dfluid02 + 2*dfluid03 + dfluid04 )
+    dfluid01 = operator_fluid_times_real(dfluid01,ONE_SIXTH)
+    dfluid02 = operator_fluid_times_real(dfluid02,ONE_THIRD)
+    dfluid03 = operator_fluid_times_real(dfluid03,ONE_THIRD)
+    dfluid04 = operator_fluid_times_real(dfluid04,ONE_SIXTH)
+    fluid = operator_fluid_add(fluid,dfluid01)
+    fluid = operator_fluid_add(fluid,dfluid02)
+    fluid = operator_fluid_add(fluid,dfluid03)
+    fluid = operator_fluid_add(fluid,dfluid04)
 
     call debug__message("called solver__advance.")
 
@@ -473,9 +493,11 @@ contains
     call ut__message('#max vel:',      nloop, time,                     &
                      sqrt(maxval(vel%x**2+vel%y**2+vel%z**2)))
     call ut__message('#flow energy: ', nloop, time,                     &
-                                      .energyintegral.fluid)
+!>                                    .energyintegral.fluid)
+                                       operator_energyintegral(fluid))
     call ut__message('#total mass: ',  nloop, time,                     &
-                                      .scalarintegral.(fluid%density))
+!>                                    .scalarintegral.(fluid%density))
+                               operator_scalarintegral(fluid%density))
 
     call debug__message('called solver__diagnosis.')
 
@@ -499,7 +521,10 @@ contains
     !<< Initial condition of the fluid >>!
     fluid%pressure = 1.0_DP
     fluid%density  = 1.0_DP      ! uniform p, T, and rho.
-    fluid%flux     = 0.0_DP      ! no flow at t=0
+!>  fluid%flux     = 0.0_DP      ! no flow at t=0
+    fluid%flux%x   = 0.0_DP      ! no flow at t=0
+    fluid%flux%y   = 0.0_DP      ! no flow at t=0
+    fluid%flux%z   = 0.0_DP      ! no flow at t=0
 
     !<< Define drive force field >>!
     call set_drive_force_field
