@@ -353,7 +353,6 @@ contains
 !   The classical 4-step, 4-th order Runge-Kutta method.
 !________________________________________________________________________/
 !
-    real(DP), parameter :: ONE_THIRD = 1.0_DP / 3.0_DP
     real(DP), parameter :: ONE_SIXTH = 1.0_DP / 6.0_DP
 
     type(field__vector3d_)        :: vel
@@ -399,15 +398,9 @@ contains
 
     !--< resuts >--!
 
-!   fluid = fluid                                                       &
-!         + ONE_SIXTH*( dfluid01 + 2*dfluid02 + 2*dfluid03 + dfluid04 )
-    ! 2018.04.28:  The above lines cause a segmentation fault in some 
-    !              cases (not always). I don't know why. --kage
-    gluid =         ONE_SIXTH*dfluid01
-    gluid = gluid + ONE_THIRD*dfluid02
-    gluid = gluid + ONE_THIRD*dfluid03
-    gluid = gluid + ONE_SIXTH*dfluid04
-    fluid = fluid + gluid
+    fluid = fluid                                                       &
+          + ONE_SIXTH*( dfluid01 + 2*dfluid02 + 2*dfluid03 + dfluid04 )
+
 
     call debug__message("called solver__advance.")
 
