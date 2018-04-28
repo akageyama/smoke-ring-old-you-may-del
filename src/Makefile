@@ -23,6 +23,8 @@ DEBUG_FLAGS =
 # FFLAGS = +check=all
 # FFLAGS = -R2
 # FFLAGS = -O3 -xAVX # for vizfront, serial
+# for gfortran...
+# FFLAGS = -Wall -Warray-bounds  -Wconversion -Wimplicit-interface -Wsurprising -Wtabs -Wunderflow -Wintrinsic-shadow -Wunused-parameter  -Walign-commons   -fdump-parse-tree  -fdump-core -fbacktrace -O0
 #-------------------------------------------------#
 FLIB =
 #-------------------------------------------------
