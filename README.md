@@ -2,15 +2,15 @@
 A simple CFD code to solve a smoke ring formation and propagation
 in a gas contained in a rectangular box. This is for education.
 
-## Usage (on iMac)
+## Usage (on Mac)
 
     cd src
     make
     make data
     cd ../slice_grapher
     make
-    make gif
-    make view
+    make gif  # supposing you have ImageMagic installed (for convert command).
+    make view  # use Safari for gif animation.
 
 ## Parameters
 
