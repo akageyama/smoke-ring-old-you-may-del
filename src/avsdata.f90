@@ -23,15 +23,18 @@ module avsdata
   use solver
   use avsdatalib
   use namelist
+  use vis
   implicit none
 
   private
   public :: avsdata__initialize,  &
             avsdata__write
-
+  
   integer :: Avs_nx  ! mesh size of the avs data
   integer :: Avs_ny
   integer :: Avs_nz
+  integer :: grid_size
+  real(SP) :: isolevel
 
   ! - 3D single precision real arrays.
   real(SP), dimension(:,:,:), allocatable :: Avs_vx  ! x-comp. of velocity
@@ -84,34 +87,41 @@ contains
 
 !_______________________________________________________________private__
 !                                                                        !
-  subroutine output(nth_call)                                            !
+  subroutine output(nth_call, nloop)                                            !
     character(len=3), intent(in) :: nth_call                             !
+    integer,          intent(in) :: nloop                                !                  
 !________________________________________________________________________!
 !
     logical :: firsttime = .true.              ! Automatic save attribute.
 
     if (firsttime) then                        ! Save coordinate data
-       call avsdatalib__coord(FILE_AVS_DATA,                               &
-                              trim(namelist__string('Avs_tag')),           &
-                              Avs_nx, Avs_ny, Avs_nz,                      &
-                              Avs_coord_x,                                 &
-                              Avs_coord_y,                                 &
-                              Avs_coord_z)
+!       call avsdatalib__coord(FILE_AVS_DATA,                               &
+!                              trim(namelist__string('Avs_tag')),           &
+!                              Avs_nx, Avs_ny, Avs_nz,                      &
+!                              Avs_coord_x,                                 &
+!                              Avs_coord_y,                                 &
+!                              Avs_coord_z)
        firsttime = .false.
     end if
 
-    call avsdatalib__fld(FILE_AVS_DATA,                                    &
-                         trim(namelist__string('Avs_tag')),                &
-                         trim(namelist__string('Avs_tag'))//'.'//nth_call, &
-                         Avs_nx, Avs_ny, Avs_nz,                           &
-                         Avs_vx, 'vx',                                     &
-                         Avs_vy, 'vy',                                     &
-                         Avs_vz, 'vz',                                     &
-                         Avs_ps, 'pressure',                               &
-                         Avs_en, 'enstrophy')
+!    call avsdatalib__fld(FILE_AVS_DATA,                                    &
+!                         trim(namelist__string('Avs_tag')),                &
+!                         trim(namelist__string('Avs_tag'))//'.'//nth_call, &
+!                         Avs_nx, Avs_ny, Avs_nz,                           &
+!                         Avs_vx, 'vx',                                     &
+!                         Avs_vy, 'vy',                                     &
+!                         Avs_vz, 'vz',                                     &
+!                         Avs_ps, 'pressure',                               &
+!                         Avs_en, 'enstrophy')
 
     call debug__message('called avsdata/output.')
-
+    
+    grid_size = Avs_nx * Avs_ny * Avs_nz
+    isolevel = 0.5
+    call vis_Isosurface( Avs_en, grid_size, Avs_nx, Avs_ny, Avs_nz , nloop, isolevel )
+    call vis_SlicePlane( Avs_en, grid_size, Avs_nx, Avs_ny, Avs_nz , nloop )
+    call vis_RayCasting( Avs_en, grid_size, Avs_nx, Avs_ny, Avs_nz , nloop )
+    
   end subroutine output
 
 
@@ -199,7 +209,7 @@ contains
     call solver__get_subfield(fluid,vel)
     call make_single_precision_field(vel,fluid%pressure)
 
-    call output(ut__i2c3(counter))
+    call output(ut__i2c3(counter), nloop)
 
     call ut__message('#avs data saved: '//ut__i2c3(counter), nloop, time)
 
