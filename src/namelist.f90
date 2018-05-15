@@ -29,13 +29,13 @@ module namelist
   logical, save :: Read_done = .false.
 
   integer                              :: Total_nloop
-  integer                              :: Avs_nskip, Slicedata_nskip
-  character(len=TAG_STRING_LENGTH_MAX) :: Avs_tag,   Slicedata_tag
+  integer                              :: Kvs_nskip, Slicedata_nskip
+  character(len=TAG_STRING_LENGTH_MAX) :: Kvs_tag,   Slicedata_tag
   real(DP)                             :: Viscosity, Kappa
   logical                              :: Debug
 
   namelist /data00/ Total_nloop
-  namelist /data01/ Avs_nskip,        Avs_tag
+  namelist /data01/ Kvs_nskip,        Kvs_tag
   namelist /data02/ Slicedata_nskip,  Slicedata_tag
   namelist /data03/ Viscosity
   namelist /data04/ Kappa
@@ -83,8 +83,8 @@ contains
                     '<namelist__integer> Read namelist file first.')
 
     select case (variable)
-    case                 ('Avs_nskip')
-       namelist__integer = Avs_nskip
+    case                 ('Kvs_nskip')
+       namelist__integer = Kvs_nskip
     case                 ('Slicedata_nskip')
        namelist__integer = Slicedata_nskip
     case                 ('Total_nloop')
@@ -154,8 +154,8 @@ contains
                     '<namelist__string> Read namelist file first.')
 
     select case         (variable)
-    case                ('Avs_tag')
-       namelist__string = Avs_tag
+    case                ('Kvs_tag')
+       namelist__string = Kvs_tag
     case                ('Slicedata_tag')
        namelist__string = Slicedata_tag
     case default
