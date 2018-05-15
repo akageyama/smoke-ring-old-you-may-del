@@ -1,4 +1,4 @@
-#include "Visualization.h"
+#include "vis_interface.h"
 #include <kvs/StructuredVolumeObject>
 #include <kvs/Isosurface>
 #include <kvs/SlicePlane>
@@ -10,7 +10,7 @@
 
 extern "C" void Isosurface( float values[], int size, int dimx, int dimy, int dimz ,int visstep, float isolevel)
 {
-  std::cout << "Visualization Start" << std::endl;
+  std::cout << "Vis_interface Start" << std::endl;
   kvs::StructuredVolumeObject* volume = new kvs::StructuredVolumeObject();
   volume->setGridTypeToUniform();
   volume->setVeclen( 1 );
@@ -46,7 +46,7 @@ extern "C" void Isosurface( float values[], int size, int dimx, int dimy, int di
 
 extern "C" void SlicePlane( float values[], int size, int dimx, int dimy, int dimz, int visstep )
 {
-  std::cout << "Visualization Start" << std::endl;
+  std::cout << "Vis_interface Start" << std::endl;
   kvs::StructuredVolumeObject* volume = new kvs::StructuredVolumeObject();
   volume->setGridTypeToUniform();
   volume->setVeclen( 1 );
@@ -80,7 +80,7 @@ extern "C" void SlicePlane( float values[], int size, int dimx, int dimy, int di
 
 extern "C" void RayCasting( float values[], int size, int dimx, int dimy, int dimz, int visstep )
 {
-  std::cout << "Visualization Start" << std::endl;
+  std::cout << "Vis_interface Start" << std::endl;
   kvs::StructuredVolumeObject* volume = new kvs::StructuredVolumeObject();
   volume->setGridTypeToUniform();
   volume->setVeclen( 1 );
