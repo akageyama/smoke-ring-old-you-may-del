@@ -13,7 +13,7 @@
 !    the periodic boundary conditions in all (three) directions.
 !
 !  - In the original setting, an external force is applied in a local
-!    region near an end of the box to drive the fluid to flow towrard the 
+!    region near an end of the box to drive the fluid to flow towrard the
 !    other end of the box. The well-known smoke ring will be formed.
 !
 !-----------------------------------------------------------------------------
@@ -44,8 +44,7 @@ program main
   use debug                 !                                    for debugging
   use grid                  !                                        grid mesh
   use field                 !                   field operators and operations
-  use avsdatalib            !            a generator of avs-field data (*.fld)
-  use avsdata               !              make and save 3D data in avs format
+  use vis                   !                            visualize data by kvs
   use slicedata             !                         generate 2-d sliced data
   use solver                !         4th order runge-kutta integration method
   implicit none             !-------------------------------------------------
@@ -58,7 +57,7 @@ program main
   call namelist__read
   call grid__initialize
   call solver__initialize(fluid)
-  call avsdata__initialize
+  call vis__initialize
   call slicedata__initialize
 
   time = 0.0_DP
@@ -74,7 +73,7 @@ program main
      nloop = nloop + 1
      if (nloop >= namelist__integer('Total_nloop')) karte = KARTE_LOOP_MAX
      call solver__diagnosis(nloop,time,fluid,karte)
-     call avsdata__write(nloop,time,fluid)
+     call vis__apply(nloop,time,fluid)
      call slicedata__write(nloop,time,fluid)
   end do
 

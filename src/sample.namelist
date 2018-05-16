@@ -1,5 +1,5 @@
 &data00 Total_nloop = 2000 /
-&data01 Avs_nskip   =  1000,           Avs_tag = '_data_avs' /
+&data01      Kvs_nskip   =  200,      Kvs_tag = '_data_kvs' /
 &data02 Slicedata_nskip  = 100, Slicedata_tag = '_data_slice' /
 ! &data03 Viscosity = 0.00005 /   ! works fine when NX*NY*NZ=152*52*52
 ! &data04     Kappa = 0.00005 /   ! works fine when NX*NY*NZ=152*52*52

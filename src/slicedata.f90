@@ -44,19 +44,21 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine make_single_precision_field(vel,ps)                         !
-    type(field__vector3d_),        intent(in) :: vel                     !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      !
-!________________________________________________________________________!
+!
+  subroutine make_single_precision_field(vel,ps)
+    type(field__vector3d_),        intent(in) :: vel
+    real(DP), dimension(NX,NY,NZ), intent(in) :: ps
+!________________________________________________________________________
 !
     integer :: slice_j = NY / 2
 
     type(field__vector3d_)        :: vor   ! vorticity
     real(DP), dimension(NX,NY,NZ) :: enstrophy
 
-          vor = .curl.vel
-    enstrophy = vor.dot.vor
+!>        vor = .curl.vel
+!>  enstrophy = vor.dot.vor
+          vor = operator_curl(vel)
+    enstrophy = operator_dot_product(vor,vor)
 
     Slice_vx = real(    vel%x(:,slice_j,:),SP)
     Slice_vy = real(    vel%y(:,slice_j,:),SP)
@@ -75,9 +77,9 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine slicedata__initialize                                       !
-!________________________________________________________________________!
+!
+  subroutine slicedata__initialize
+!________________________________________________________________________
 !
     allocate(Slice_vx(NX,NZ),   &
              Slice_vy(NX,NZ),   &
@@ -99,16 +101,16 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine slicedata__write(nloop,time,fluid)                          !
-    integer,             intent(in) :: nloop                             !
-    real(DP),            intent(in) :: time                              !
-    type(field__fluid_), intent(in) :: fluid                             !
-!________________________________________________________________________!
+!
+  subroutine slicedata__write(nloop,time,fluid)
+    integer,             intent(in) :: nloop
+    real(DP),            intent(in) :: time
+    type(field__fluid_), intent(in) :: fluid
+!________________________________________________________________________
 !
     type(field__vector3d_) :: vel
 
-    if ( namelist__integer('Slicedata_nskip') <= 0 ) return    
+    if ( namelist__integer('Slicedata_nskip') <= 0 ) return
                                       ! Set zero or negative integer
                                       ! when you don't want to
                                       ! save any slice data.

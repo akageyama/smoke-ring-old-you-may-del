@@ -29,13 +29,13 @@ module namelist
   logical, save :: Read_done = .false.
 
   integer                              :: Total_nloop
-  integer                              :: Avs_nskip, Slicedata_nskip
-  character(len=TAG_STRING_LENGTH_MAX) :: Avs_tag,   Slicedata_tag
+  integer                              :: Kvs_nskip, Slicedata_nskip
+  character(len=TAG_STRING_LENGTH_MAX) :: Kvs_tag,   Slicedata_tag
   real(DP)                             :: Viscosity, Kappa
   logical                              :: Debug
 
   namelist /data00/ Total_nloop
-  namelist /data01/ Avs_nskip,        Avs_tag
+  namelist /data01/ Kvs_nskip,        Kvs_tag
   namelist /data02/ Slicedata_nskip,  Slicedata_tag
   namelist /data03/ Viscosity
   namelist /data04/ Kappa
@@ -50,11 +50,11 @@ contains
 !==============
 
 !________________________________________________________________public__
-!                                                                        !
-  function namelist__double(variable)                                    !
-    character(len=*), intent(in) :: variable                             !
-    real(DP) :: namelist__double                                         !
-!________________________________________________________________________!
+!
+  function namelist__double(variable)
+    character(len=*), intent(in) :: variable
+    real(DP) :: namelist__double
+!________________________________________________________________________
 !
     call ut__assert(Read_done, &
                     '<namelist__double> Read namelist file first.')
@@ -73,18 +73,18 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  function namelist__integer(variable)                                   !
-    character(len=*), intent(in) :: variable                             !
-    integer :: namelist__integer                                         !
-!________________________________________________________________________!
+!
+  function namelist__integer(variable)
+    character(len=*), intent(in) :: variable
+    integer :: namelist__integer
+!________________________________________________________________________
 !
     call ut__assert(Read_done, &
                     '<namelist__integer> Read namelist file first.')
 
     select case (variable)
-    case                 ('Avs_nskip')
-       namelist__integer = Avs_nskip
+    case                 ('Kvs_nskip')
+       namelist__integer = Kvs_nskip
     case                 ('Slicedata_nskip')
        namelist__integer = Slicedata_nskip
     case                 ('Total_nloop')
@@ -98,11 +98,11 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  function namelist__logical(variable)                                   !
-    character(len=*), intent(in) :: variable                             !
-    logical :: namelist__logical                                         !
-!________________________________________________________________________!
+!
+  function namelist__logical(variable)
+    character(len=*), intent(in) :: variable
+    logical :: namelist__logical
+!________________________________________________________________________
 !
     call ut__assert(Read_done, &
                     '<namelist__logical> Read namelist file first.')
@@ -119,9 +119,9 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine namelist__read                                              !
-!________________________________________________________________________!
+!
+  subroutine namelist__read
+!________________________________________________________________________
 !
 
     read(FILE_NAMELIST,nml=data00)
@@ -144,18 +144,18 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  function namelist__string(variable)                                    !
-    character(len=*), intent(in) :: variable                             !
-    character(len=TAG_STRING_LENGTH_MAX) :: namelist__string             !
-!________________________________________________________________________!
+!
+  function namelist__string(variable)
+    character(len=*), intent(in) :: variable
+    character(len=TAG_STRING_LENGTH_MAX) :: namelist__string
+!________________________________________________________________________
 !
     call ut__assert(Read_done, &
                     '<namelist__string> Read namelist file first.')
 
     select case         (variable)
-    case                ('Avs_tag')
-       namelist__string = Avs_tag
+    case                ('Kvs_tag')
+       namelist__string = Kvs_tag
     case                ('Slicedata_tag')
        namelist__string = Slicedata_tag
     case default
