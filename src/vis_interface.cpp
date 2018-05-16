@@ -64,7 +64,7 @@ void SlicePlane( float values[], int size, int dimx, int dimy, int dimz, int vis
 
   const kvs::Vector3f c( ( volume->maxObjectCoord() + volume->minObjectCoord() ) * 0.4f );
   const kvs::Vector3f p( c );
-  const kvs::Vector3f n( 0.0, 0.0, 1.0 );
+  const kvs::Vector3f n( 0.0, 1.0, 0.0 );
   const kvs::TransferFunction tfunc( 256 );
 
   kvs::PolygonObject* object = new kvs::SlicePlane( volume, p, n, tfunc );
