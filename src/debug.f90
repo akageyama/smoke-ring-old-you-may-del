@@ -49,10 +49,10 @@ contains
 
 
 !_______________________________________________________________private__
-!                     
-  subroutine message_decorated_str(mark,string)                          
-    character, intent(in)        :: mark                                
-    character(len=*), intent(in) :: string                              
+!
+  subroutine message_decorated_str(mark,string)
+    character, intent(in)        :: mark
+    character(len=*), intent(in) :: string
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -63,11 +63,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        
-  subroutine message_decorated_str_int(mark,string,int)                 
-    character, intent(in)        :: mark                               
-    character(len=*), intent(in) :: string                            
-    integer, intent(in)          :: int                              
+!
+  subroutine message_decorated_str_int(mark,string,int)
+    character, intent(in)        :: mark
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: int
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -79,8 +79,8 @@ contains
 
 !_______________________________________________________________private__
 !
-  subroutine message_str(string)                                         
-    character(len=*), intent(in) :: string                              
+  subroutine message_str(string)
+    character(len=*), intent(in) :: string
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -91,10 +91,10 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        
-  subroutine message_str_double(string, double)                         
-    character(len=*), intent(in) :: string                             
-    real(DP), intent(in)         :: double                            
+!
+  subroutine message_str_double(string, double)
+    character(len=*), intent(in) :: string
+    real(DP), intent(in)         :: double
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -104,11 +104,11 @@ contains
   end subroutine message_str_double
 
 !_______________________________________________________________private__
-!   
-  subroutine message_str_double_double(string, double1, double2)         
-    character(len=*), intent(in) :: string                              
-    real(DP), intent(in)         :: double1                            
-    real(DP), intent(in)         :: double2                           
+!
+  subroutine message_str_double_double(string, double1, double2)
+    character(len=*), intent(in) :: string
+    real(DP), intent(in)         :: double1
+    real(DP), intent(in)         :: double2
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -119,10 +119,10 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                       
-  subroutine message_str_int(string, int)                              
-    character(len=*), intent(in) :: string                            
-    integer, intent(in)          :: int                              
+!
+  subroutine message_str_int(string, int)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: int
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -133,10 +133,10 @@ contains
 
 
 !_______________________________________________________________private__
-!   
-  subroutine message_str_int_int(string, i1, i2)                         
-    character(len=*), intent(in) :: string                              
-    integer, intent(in)          :: i1, i2                             
+!
+  subroutine message_str_int_int(string, i1, i2)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: i1, i2
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -147,10 +147,10 @@ contains
 
 
 !_______________________________________________________________private__
-!   
-  subroutine message_str_int_int_int(string, i1, i2, i3)                 
-    character(len=*), intent(in) :: string                              
-    integer, intent(in)          :: i1, i2, i3                         
+!
+  subroutine message_str_int_int_int(string, i1, i2, i3)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: i1, i2, i3
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -161,11 +161,11 @@ contains
 
 
 !_______________________________________________________________private__
-!      
-  subroutine message_str_int_int_double(string, i1, i2, d1)             
-    character(len=*), intent(in) :: string                             
-    integer, intent(in)          :: i1, i2                            
-    real(DP), intent(in)         :: d1                               
+!
+  subroutine message_str_int_int_double(string, i1, i2, d1)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: i1, i2
+    real(DP), intent(in)         :: d1
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -176,11 +176,11 @@ contains
 
 
 !_______________________________________________________________private__
-!      
-  subroutine message_str_int_double(string, i1, d1)                      
-    character(len=*), intent(in) :: string                              
-    integer, intent(in)          :: i1                                 
-    real(DP), intent(in)         :: d1                                
+!
+  subroutine message_str_int_double(string, i1, d1)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: i1
+    real(DP), intent(in)         :: d1
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -191,11 +191,11 @@ contains
 
 
 !_______________________________________________________________private__
-!      
-  subroutine message_str_int_double_double(string, i1, d1, d2)           
-    character(len=*), intent(in) :: string                              
-    integer, intent(in)          :: i1                                 
-    real(DP), intent(in)         :: d1, d2                            
+!
+  subroutine message_str_int_double_double(string, i1, d1, d2)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: i1
+    real(DP), intent(in)         :: d1, d2
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -206,11 +206,11 @@ contains
 
 
 !_______________________________________________________________private__
-!      
-  subroutine message_str_int_float_float(string, i1, f1, f2)             
-    character(len=*), intent(in) :: string                              
-    integer, intent(in)          :: i1                                 
-    real(SP), intent(in)         :: f1, f2                            
+!
+  subroutine message_str_int_float_float(string, i1, f1, f2)
+    character(len=*), intent(in) :: string
+    integer, intent(in)          :: i1
+    real(SP), intent(in)         :: f1, f2
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then
@@ -221,10 +221,10 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                       
-  subroutine message_str_int_str_int(str1, i1, str2, i2)               
-    character(len=*), intent(in) :: str1, str2                        
-    integer, intent(in)          :: i1, i2                           
+!
+  subroutine message_str_int_str_int(str1, i1, str2, i2)
+    character(len=*), intent(in) :: str1, str2
+    integer, intent(in)          :: i1, i2
 !________________________________________________________________________
 !
     if (namelist__logical('Debug')) then

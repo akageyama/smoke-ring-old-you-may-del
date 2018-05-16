@@ -96,9 +96,9 @@ contains
 
 !_______________________________________________________________private__
 !
-  subroutine make_single_precision_field(vel,ps)                         
-    type(field__vector3d_),        intent(in) :: vel                    
-    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                    
+  subroutine make_single_precision_field(vel,ps)
+    type(field__vector3d_),        intent(in) :: vel
+    real(DP), dimension(NX,NY,NZ), intent(in) :: ps
 !________________________________________________________________________
 !
     type(field__vector3d_)        :: vor   ! vorticity
@@ -121,10 +121,10 @@ contains
 
 
 !_______________________________________________________________private__
-! 
-  subroutine output(nth_call, nloop)                                     
-    character(len=3), intent(in) :: nth_call                            
-    integer,          intent(in) :: nloop                              
+!
+  subroutine output(nth_call, nloop)
+    character(len=3), intent(in) :: nth_call
+    integer,          intent(in) :: nloop
 !________________________________________________________________________
 !
     logical :: firsttime = .true.              ! Automatic save attribute.
@@ -157,7 +157,7 @@ contains
 
 !________________________________________________________________public__
 !
-  subroutine vis__initialize                                             
+  subroutine vis__initialize
 !________________________________________________________________________
 !
 !  We define the AVS coordinates as the so-called 'irregular',
@@ -212,17 +212,17 @@ contains
 
 !________________________________________________________________public__
 !
-  subroutine vis__write(nloop,time,fluid)                               
-    integer,             intent(in) :: nloop                           
-    real(DP),            intent(in) :: time                           
-    type(field__fluid_), intent(in) :: fluid                         
+  subroutine vis__write(nloop,time,fluid)
+    integer,             intent(in) :: nloop
+    real(DP),            intent(in) :: time
+    type(field__fluid_), intent(in) :: fluid
 !________________________________________________________________________
 !
     type(field__vector3d_) :: vel
 
     integer :: counter = 0            ! it has automatic save attribute.
 
-    if ( namelist__integer('Kvs_nskip') <= 0 ) return    
+    if ( namelist__integer('Kvs_nskip') <= 0 ) return
                                       ! Set zero or negative integer
                                       ! when you don't want to
                                       ! save any AVS data.

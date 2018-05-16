@@ -44,10 +44,10 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        
-  subroutine make_single_precision_field(vel,ps)                         
-    type(field__vector3d_),        intent(in) :: vel                     
-    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      
+!
+  subroutine make_single_precision_field(vel,ps)
+    type(field__vector3d_),        intent(in) :: vel
+    real(DP), dimension(NX,NY,NZ), intent(in) :: ps
 !________________________________________________________________________
 !
     integer :: slice_j = NY / 2
@@ -77,8 +77,8 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  subroutine slicedata__initialize                                       
+!
+  subroutine slicedata__initialize
 !________________________________________________________________________
 !
     allocate(Slice_vx(NX,NZ),   &
@@ -101,16 +101,16 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  subroutine slicedata__write(nloop,time,fluid)                          
-    integer,             intent(in) :: nloop                             
-    real(DP),            intent(in) :: time                              
-    type(field__fluid_), intent(in) :: fluid                             
+!
+  subroutine slicedata__write(nloop,time,fluid)
+    integer,             intent(in) :: nloop
+    real(DP),            intent(in) :: time
+    type(field__fluid_), intent(in) :: fluid
 !________________________________________________________________________
 !
     type(field__vector3d_) :: vel
 
-    if ( namelist__integer('Slicedata_nskip') <= 0 ) return    
+    if ( namelist__integer('Slicedata_nskip') <= 0 ) return
                                       ! Set zero or negative integer
                                       ! when you don't want to
                                       ! save any slice data.

@@ -77,8 +77,8 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  subroutine grid__initialize                                            
+!
+  subroutine grid__initialize
 !________________________________________________________________________
 !
 !   Here we suppose the periodic boundary condition in all directions.

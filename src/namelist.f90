@@ -50,10 +50,10 @@ contains
 !==============
 
 !________________________________________________________________public__
-!                                                                        
-  function namelist__double(variable)                                    
-    character(len=*), intent(in) :: variable                             
-    real(DP) :: namelist__double                                         
+!
+  function namelist__double(variable)
+    character(len=*), intent(in) :: variable
+    real(DP) :: namelist__double
 !________________________________________________________________________
 !
     call ut__assert(Read_done, &
@@ -73,10 +73,10 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  function namelist__integer(variable)                                   
-    character(len=*), intent(in) :: variable                             
-    integer :: namelist__integer                                         
+!
+  function namelist__integer(variable)
+    character(len=*), intent(in) :: variable
+    integer :: namelist__integer
 !________________________________________________________________________
 !
     call ut__assert(Read_done, &
@@ -98,10 +98,10 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  function namelist__logical(variable)                                   
-    character(len=*), intent(in) :: variable                             
-    logical :: namelist__logical                                         
+!
+  function namelist__logical(variable)
+    character(len=*), intent(in) :: variable
+    logical :: namelist__logical
 !________________________________________________________________________
 !
     call ut__assert(Read_done, &
@@ -119,8 +119,8 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  subroutine namelist__read                                              
+!
+  subroutine namelist__read
 !________________________________________________________________________
 !
 
@@ -144,10 +144,10 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        
-  function namelist__string(variable)                                    
-    character(len=*), intent(in) :: variable                             
-    character(len=TAG_STRING_LENGTH_MAX) :: namelist__string             
+!
+  function namelist__string(variable)
+    character(len=*), intent(in) :: variable
+    character(len=TAG_STRING_LENGTH_MAX) :: namelist__string
 !________________________________________________________________________
 !
     call ut__assert(Read_done, &

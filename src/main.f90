@@ -13,7 +13,7 @@
 !    the periodic boundary conditions in all (three) directions.
 !
 !  - In the original setting, an external force is applied in a local
-!    region near an end of the box to drive the fluid to flow towrard the 
+!    region near an end of the box to drive the fluid to flow towrard the
 !    other end of the box. The well-known smoke ring will be formed.
 !
 !-----------------------------------------------------------------------------
