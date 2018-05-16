@@ -73,7 +73,7 @@ program main
      nloop = nloop + 1
      if (nloop >= namelist__integer('Total_nloop')) karte = KARTE_LOOP_MAX
      call solver__diagnosis(nloop,time,fluid,karte)
-     call vis__write(nloop,time,fluid)
+     call vis__apply(nloop,time,fluid)
      call slicedata__write(nloop,time,fluid)
   end do
 

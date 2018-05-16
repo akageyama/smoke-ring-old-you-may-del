@@ -26,7 +26,7 @@ module vis
 
   private
   public :: vis__initialize,  &
-            vis__write
+            vis__apply
 
   integer :: Kvs_nx  ! mesh size of the kvs data
   integer :: Kvs_ny
@@ -130,7 +130,7 @@ contains
     logical :: firsttime = .true.              ! Automatic save attribute.
 
     if (firsttime) then                        ! Save coordinate data
-!       call vislib__coord(FILE_AVS_DATA,                               &
+!       call vislib__coord(FILE_KVS_DATA,                               &
 !                          trim(namelist__string('Kvs_tag')),           &
 !                          Kvs_nx, Kvs_ny, Kvs_nz,                      &
 !                          Kvs_coord_x,                                 &
@@ -160,8 +160,6 @@ contains
   subroutine vis__initialize
 !________________________________________________________________________
 !
-!  We define the AVS coordinates as the so-called 'irregular',
-!  since my module 'gavs' accepts only this grid system.
 !________________________________________________________________________/
 !
     integer  :: i, j, k
@@ -172,7 +170,7 @@ contains
 
     call iMalloc(Kvs_nx,Kvs_ny,Kvs_nz)
 
-    call debug__message('AVS data allocated.')
+    call debug__message('KVS data allocated.')
 
 !   do k = 1 , Kvs_nz
 !      do j = 1 , Kvs_ny
@@ -212,7 +210,7 @@ contains
 
 !________________________________________________________________public__
 !
-  subroutine vis__write(nloop,time,fluid)
+  subroutine vis__apply(nloop,time,fluid)
     integer,             intent(in) :: nloop
     real(DP),            intent(in) :: time
     type(field__fluid_), intent(in) :: fluid
@@ -225,23 +223,23 @@ contains
     if ( namelist__integer('Kvs_nskip') <= 0 ) return
                                       ! Set zero or negative integer
                                       ! when you don't want to
-                                      ! save any AVS data.
+                                      ! visualize by KVS.
 
     if ( mod(nloop,namelist__integer('Kvs_nskip')) /= 0 ) return
 
-    call ut__assert(Initialize_done,"<vis__write> Forgot init?")
+    call ut__assert(Initialize_done,"<vis__apply> Forgot init?")
 
     call solver__get_subfield(fluid,vel)
     call make_single_precision_field(vel,fluid%pressure)
 
     call output(ut__i2c3(counter), nloop)
 
-    call ut__message('#avs data saved: '//ut__i2c3(counter), nloop, time)
+    call ut__message('#kvs called: '//ut__i2c3(counter), nloop, time)
 
     counter = counter + 1
 
-    call debug__message("called vis__write.")
+    call debug__message("called vis__apply.")
 
-  end subroutine vis__write
+  end subroutine vis__apply
 
 end module vis
