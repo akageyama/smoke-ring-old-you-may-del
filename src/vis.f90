@@ -52,35 +52,35 @@ module vis
      subroutine vis_Isosurface(values,size,dimx,dimy,dimz,visstep,isolevel) &
                           bind(c,name="Isosurface")
        import
-       integer(c_int), value :: size
-       real(c_float)         :: values(size)
-       integer(c_int), value :: dimx
-       integer(c_int), value :: dimy
-       integer(c_int), value :: dimz
-       integer(c_int), value :: visstep
-       real(c_float),  value :: isolevel
+       integer(c_int),   value :: size
+       real(c_float)           :: values(size)
+       integer(c_int),   value :: dimx
+       integer(c_int),   value :: dimy
+       integer(c_int),   value :: dimz
+       character(C_char), value :: visstep
+       real(c_float),    value :: isolevel
      end subroutine vis_Isosurface
 
      subroutine vis_SlicePlane(values,size,dimx,dimy,dimz,visstep) &
                           bind(c,name="SlicePlane")
        import
-       integer(c_int), value :: size
-       real(c_float)         :: values(size)
-       integer(c_int), value :: dimx
-       integer(c_int), value :: dimy
-       integer(c_int), value :: dimz
-       integer(c_int), value :: visstep
+       integer(c_int),   value :: size
+       real(c_float)           :: values(size)
+       integer(c_int),   value :: dimx
+       integer(c_int),   value :: dimy
+       integer(c_int),   value :: dimz
+       character(C_char), value :: visstep
      end subroutine vis_SlicePlane
 
      subroutine vis_RayCasting(values,size,dimx,dimy,dimz,visstep) &
                           bind(c,name="RayCasting")
        import
-       integer(c_int), value :: size
-       real(c_float)         :: values(size)
-       integer(c_int), value :: dimx
-       integer(c_int), value :: dimy
-       integer(c_int), value :: dimz
-       integer(c_int), value :: visstep
+       integer(c_int),   value :: size
+       real(c_float)           :: values(size)
+       integer(c_int),   value :: dimx
+       integer(c_int),   value :: dimy
+       integer(c_int),   value :: dimz
+       character(C_char), value :: visstep
      end subroutine vis_RayCasting
 
   end interface
@@ -128,6 +128,7 @@ contains
 !________________________________________________________________________
 !
     logical :: firsttime = .true.              ! Automatic save attribute.
+    character(len=7) :: str7_loop
 
     if (firsttime) then                        ! Save coordinate data
 !       call vislib__coord(FILE_KVS_DATA,                               &
@@ -141,11 +142,20 @@ contains
 
     call debug__message('called vis/output.')
 
+    str7_loop = ut__int_to_str7(nloop)
+
     grid_size = Kvs_nx * Kvs_ny * Kvs_nz
     isolevel = 0.5
-    call vis_Isosurface(Kvs_en,grid_size,Kvs_nx,Kvs_ny,Kvs_nz,nloop,isolevel)
-    call vis_SlicePlane(Kvs_en,grid_size,Kvs_nx,Kvs_ny,Kvs_nz,nloop )
-    call vis_RayCasting(Kvs_en,grid_size,Kvs_nx,Kvs_ny,Kvs_nz,nloop )
+    call vis_Isosurface(Kvs_en,  &
+                        grid_size, Kvs_nx, Kvs_ny, Kvs_nz,  &
+                        str7_loop//C_null_char,  &
+                        isolevel)
+    call vis_SlicePlane(Kvs_en,  &
+                        grid_size, Kvs_nx, Kvs_ny, Kvs_nz,  &
+                        str7_loop//C_null_char )
+    call vis_RayCasting(Kvs_en,  &
+                        grid_size, Kvs_nx, Kvs_ny, Kvs_nz,  &
+                        str7_loop//C_null_char )
 
   end subroutine output
 
@@ -223,7 +233,7 @@ contains
     if ( namelist__integer('Kvs_nskip') <= 0 ) return
                                       ! Set zero or negative integer
                                       ! when you don't want to
-                                      ! visualize by KVS.
+                                      ! visualize the data by KVS.
 
     if ( mod(nloop,namelist__integer('Kvs_nskip')) /= 0 ) return
 
@@ -232,9 +242,9 @@ contains
     call solver__get_subfield(fluid,vel)
     call make_single_precision_field(vel,fluid%pressure)
 
-    call output(ut__i2c3(counter), nloop)
+    call output(ut__int_to_str3(counter), nloop)
 
-    call ut__message('#kvs called: '//ut__i2c3(counter), nloop, time)
+    call ut__message('#kvs called: '//ut__int_to_str3(counter), nloop, time)
 
     counter = counter + 1
 

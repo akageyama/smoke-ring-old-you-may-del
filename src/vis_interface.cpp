@@ -11,7 +11,7 @@
 
 //-----------------------------------------------------------------------------
 extern "C"
-void Isosurface( float values[], int size, int dimx, int dimy, int dimz , int visstep, float isolevel)
+void Isosurface( float values[], int size, int dimx, int dimy, int dimz , char *visstep, float isolevel)
 //-----------------------------------------------------------------------------
 {
   std::cout << "Vis_interface Start" << std::endl;
@@ -49,7 +49,7 @@ void Isosurface( float values[], int size, int dimx, int dimy, int dimz , int vi
 
 //-----------------------------------------------------------------------------
 extern "C"
-void SlicePlane( float values[], int size, int dimx, int dimy, int dimz, int visstep )
+void SlicePlane( float values[], int size, int dimx, int dimy, int dimz, char *visstep )
 //-----------------------------------------------------------------------------
 {
   std::cout << "Vis_interface Start" << std::endl;
@@ -86,7 +86,7 @@ void SlicePlane( float values[], int size, int dimx, int dimy, int dimz, int vis
 
 //-----------------------------------------------------------------------------
 extern "C"
-void RayCasting( float values[], int size, int dimx, int dimy, int dimz, int visstep )
+void RayCasting( float values[], int size, int dimx, int dimy, int dimz, char *visstep )
 //-----------------------------------------------------------------------------
 {
   std::cout << "Vis_interface Start" << std::endl;
