@@ -1,16 +1,26 @@
 # smoke-ring
-A simple CFD code to solve a smoke ring formation and propagation
-in a gas contained in a rectangular box. This is for education.
+A simple CFD code to solve a smoke ring formation and propagation.
+This is for education.
 
-## Usage (on Mac)
+## Physical Model
+A gas contained in a rectangular box is driven by a localized force.
+
+
+## Prerequisite
+
+- [KVS-osmesa](https://github.com/vizlab-kobe/KVS.osmesa), for simulation run and (3-D) in-situ visualization.
+- ImageMagic, for post-process (2-D) visualization.
+
+## Usage
 
     cd src
-    make
-    make data
+    kvsmake -g smoke-ring
+    kvsmake
+    ./smoke-ring < sample.namelist
     cd ../slice_grapher
     make
-    make gif  # supposing you have ImageMagic installed (for convert command).
-    make view  # use Safari for gif animation.
+    make gif  # ImageMagic (convert command) is used.
+    make view  # Here we use Safari browser for gif animation.
 
 ## Parameters
 
