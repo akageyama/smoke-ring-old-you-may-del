@@ -44,11 +44,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine make_single_precision_field(vel,ps)                         !
-    type(field__vector3d_),        intent(in) :: vel                     !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      !
-!________________________________________________________________________!
+!                                                                        
+  subroutine make_single_precision_field(vel,ps)                         
+    type(field__vector3d_),        intent(in) :: vel                     
+    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      
+!________________________________________________________________________
 !
     integer :: slice_j = NY / 2
 
@@ -77,9 +77,9 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine slicedata__initialize                                       !
-!________________________________________________________________________!
+!                                                                        
+  subroutine slicedata__initialize                                       
+!________________________________________________________________________
 !
     allocate(Slice_vx(NX,NZ),   &
              Slice_vy(NX,NZ),   &
@@ -101,12 +101,12 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine slicedata__write(nloop,time,fluid)                          !
-    integer,             intent(in) :: nloop                             !
-    real(DP),            intent(in) :: time                              !
-    type(field__fluid_), intent(in) :: fluid                             !
-!________________________________________________________________________!
+!                                                                        
+  subroutine slicedata__write(nloop,time,fluid)                          
+    integer,             intent(in) :: nloop                             
+    real(DP),            intent(in) :: time                              
+    type(field__fluid_), intent(in) :: fluid                             
+!________________________________________________________________________
 !
     type(field__vector3d_) :: vel
 

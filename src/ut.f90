@@ -50,11 +50,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_decorated_str(mark,string)                          !
-    character, intent(in)        :: mark                                 !
-    character(len=*), intent(in) :: string                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_decorated_str(mark,string)                          
+    character, intent(in)        :: mark                                 
+    character(len=*), intent(in) :: string                               
+!________________________________________________________________________
 ! ! Usage:
   !    call message_decorated_str('#',"This is a test.")
   ! Output:
@@ -73,12 +73,12 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_decorated_str_int(mark,string,int)                  !
-    character, intent(in)        :: mark                                 !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: int                                  !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_decorated_str_int(mark,string,int)                  
+    character, intent(in)        :: mark                                 
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: int                                  
+!________________________________________________________________________
 ! Usage:
 !    call mess...('#','This is message at nloop = ', nloop)
 !----------------------------------------------------------
@@ -91,124 +91,124 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str(string)                                         !
-    character(len=*), intent(in) :: string                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str(string)                                         
+    character(len=*), intent(in) :: string                               
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string
   end subroutine message_str
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_double(string, double)                          !
-    character(len=*), intent(in) :: string                               !
-    real(DP), intent(in)         :: double                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_double(string, double)                          
+    character(len=*), intent(in) :: string                               
+    real(DP), intent(in)         :: double                               
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, double
   end subroutine message_str_double
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_double_double(string, double1, double2)         !
-    character(len=*), intent(in) :: string                               !
-    real(DP), intent(in)         :: double1                              !
-    real(DP), intent(in)         :: double2                              !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_double_double(string, double1, double2)         
+    character(len=*), intent(in) :: string                               
+    real(DP), intent(in)         :: double1                              
+    real(DP), intent(in)         :: double2                              
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, double1, double2
   end subroutine message_str_double_double
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int(string, int)                                !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: int                                  !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int(string, int)                                
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: int                                  
+!________________________________________________________________________
 !
    write(FILE_STANDARD_OUT,*) string, int
   end subroutine message_str_int
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_int(string, i1, i2)                         !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: i1, i2                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_int(string, i1, i2)                         
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: i1, i2                               
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, i1, i2
   end subroutine message_str_int_int
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_int_int(string, i1, i2, i3)                 !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: i1, i2, i3                           !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_int_int(string, i1, i2, i3)                 
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: i1, i2, i3                           
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, i1, i2, i3
   end subroutine message_str_int_int_int
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_int_double(string, i1, i2, d1)              !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: i1, i2                               !
-    real(DP), intent(in)         :: d1                                   !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_int_double(string, i1, i2, d1)              
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: i1, i2                               
+    real(DP), intent(in)         :: d1                                   
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, i1, i2, d1
   end subroutine message_str_int_int_double
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_double(string, i1, d1)                      !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: i1                                   !
-    real(DP), intent(in)         :: d1                                   !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_double(string, i1, d1)                      
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: i1                                   
+    real(DP), intent(in)         :: d1                                   
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, i1, d1
   end subroutine message_str_int_double
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_double_double(string, i1, d1, d2)           !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: i1                                   !
-    real(DP), intent(in)         :: d1, d2                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_double_double(string, i1, d1, d2)           
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: i1                                   
+    real(DP), intent(in)         :: d1, d2                               
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, i1, d1, d2
   end subroutine message_str_int_double_double
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_float_float(string, i1, f1, f2)             !
-    character(len=*), intent(in) :: string                               !
-    integer, intent(in)          :: i1                                   !
-    real(SP), intent(in)         :: f1, f2                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_float_float(string, i1, f1, f2)             
+    character(len=*), intent(in) :: string                               
+    integer, intent(in)          :: i1                                   
+    real(SP), intent(in)         :: f1, f2                               
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) string, i1, f1, f2
   end subroutine message_str_int_float_float
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine message_str_int_str_int(str1, i1, str2, i2)                 !
-    character(len=*), intent(in) :: str1, str2                           !
-    integer, intent(in)          :: i1, i2                               !
-!________________________________________________________________________!
+!                                                                        
+  subroutine message_str_int_str_int(str1, i1, str2, i2)                 
+    character(len=*), intent(in) :: str1, str2                           
+    integer, intent(in)          :: i1, i2                               
+!________________________________________________________________________
 !
     write(FILE_STANDARD_OUT,*) str1, i1, str2, i2
   end subroutine message_str_int_str_int
@@ -220,11 +220,11 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine ut__assert(condition, last_will)                            !
-    logical, intent(in)          :: condition                            !
-    character(len=*), intent(in) :: last_will                            !
-!________________________________________________________________________!
+!                                                                        
+  subroutine ut__assert(condition, last_will)                            
+    logical, intent(in)          :: condition                            
+    character(len=*), intent(in) :: last_will                            
+!________________________________________________________________________
 !
     if (.not.condition) then
        call ut__fatal(last_will)
@@ -234,10 +234,10 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine ut__fatal(last_will)                                        !
-    character(len=*), intent(in) :: last_will                            !
-!________________________________________________________________________!
+!                                                                        
+  subroutine ut__fatal(last_will)                                        
+    character(len=*), intent(in) :: last_will                            
+!________________________________________________________________________
 !
 !  Print fatal message and exit.
 !________________________________________________________________________/
@@ -249,11 +249,11 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  function ut__i2c3(i) result(str3)                                      !
-    integer, intent(in) :: i                                             !
-    character(len=3)    :: str3                                          !
-!________________________________________________________________________!
+!                                                                        
+  function ut__i2c3(i) result(str3)                                      
+    integer, intent(in) :: i                                             
+    character(len=3)    :: str3                                          
+!________________________________________________________________________
 !  Convert an integer into 3 characters.
 !             e.g., i=10 --> str3="010"
 !________________________________________________________________________/

@@ -53,11 +53,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  function drive_force_factor(time)                                      !
-    real(DP), intent(in) :: time                                         !
-    real(DP)             :: drive_force_factor                           !
-!________________________________________________________________________!
+!                                                                        
+  function drive_force_factor(time)                                      
+    real(DP), intent(in) :: time                                         
+    real(DP)             :: drive_force_factor                           
+!________________________________________________________________________
 !
 !                                      factor
 !              ___________               |
@@ -102,9 +102,9 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine set_drive_force_field                                       !
-!________________________________________________________________________!
+!                                                                        
+  subroutine set_drive_force_field                                       
+!________________________________________________________________________
 !
     real(DP) :: xx, yy, zz
     integer  :: i, j, k
@@ -168,11 +168,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine subfield_vel(fluid,vel)                                     !
-    type(field__fluid_),    intent(in)  :: fluid                         !
-    type(field__vector3d_), intent(out) :: vel                           !
-!________________________________________________________________________!
+!                                                                        
+  subroutine subfield_vel(fluid,vel)                                     
+    type(field__fluid_),    intent(in)  :: fluid                         
+    type(field__vector3d_), intent(out) :: vel                           
+!________________________________________________________________________
 !
 !>  vel = fluid%flux / fluid%density     ! operator defined in field.
     vel = operator_vector_divby_scalar(fluid%flux, fluid%density)
@@ -183,12 +183,12 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine subfield_vel_tm(fluid,vel,tm)                               !
-    type(field__fluid_),           intent(in)  :: fluid                  !
-    type(field__vector3d_),        intent(out) :: vel                    !
-    real(DP), dimension(NX,NY,NZ), intent(out) :: tm                     !
-!________________________________________________________________________!
+!                                                                        
+  subroutine subfield_vel_tm(fluid,vel,tm)                               
+    type(field__fluid_),           intent(in)  :: fluid                  
+    type(field__vector3d_),        intent(out) :: vel                    
+    real(DP), dimension(NX,NY,NZ), intent(out) :: tm                     
+!________________________________________________________________________
 !
 !>   vel = fluid%flux     / fluid%density ! operator defined in field.f90.
      vel = operator_vector_divby_scalar(fluid%flux, fluid%density)
@@ -200,13 +200,13 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine subfield_vel_tm_divv(fluid,vel,tm,divv)                     !
-    type(field__fluid_),           intent(in)  :: fluid                  !
-    type(field__vector3d_),        intent(out) :: vel                    !
-    real(DP), dimension(NX,NY,NZ), intent(out) :: tm                     !
-    real(DP), dimension(NX,NY,NZ), intent(out) :: divv                   !
-!________________________________________________________________________!
+!                                                                        
+  subroutine subfield_vel_tm_divv(fluid,vel,tm,divv)                     
+    type(field__fluid_),           intent(in)  :: fluid                  
+    type(field__vector3d_),        intent(out) :: vel                    
+    real(DP), dimension(NX,NY,NZ), intent(out) :: tm                     
+    real(DP), dimension(NX,NY,NZ), intent(out) :: divv                   
+!________________________________________________________________________
 !
 !>   vel = fluid%flux     / fluid%density ! operator defined in field.f90.
      vel = operator_vector_divby_scalar(fluid%flux, fluid%density)
@@ -220,15 +220,15 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  function the_equation(t,dt,vx,vy,vz,tm,divv,fx,fy,fz,ps)               !
-    real(DP),                      intent(in) :: t, dt                   !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: vx, vy, vz              !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: tm, divv                !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: fx, fy, fz              !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      !
-    type(field__fluid_) :: the_equation                                  !
-!________________________________________________________________________!
+!                                                                        
+  function the_equation(t,dt,vx,vy,vz,tm,divv,fx,fy,fz,ps)               
+    real(DP),                      intent(in) :: t, dt                   
+    real(DP), dimension(NX,NY,NZ), intent(in) :: vx, vy, vz              
+    real(DP), dimension(NX,NY,NZ), intent(in) :: tm, divv                
+    real(DP), dimension(NX,NY,NZ), intent(in) :: fx, fy, fz              
+    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      
+    type(field__fluid_) :: the_equation                                  
+!________________________________________________________________________
 !
 !  Here we ignore the viscous heating term in the presssure equation.
 !________________________________________________________________________/
@@ -347,12 +347,12 @@ contains
 
 
 !_______________________________________________________________public___
-!                                                                        !
-  subroutine solver__advance(t,dt,fluid)                                 !
-    real(DP), intent(inout)             :: t                             !
-    real(DP), intent(in)                :: dt                            !
-    type(field__fluid_), intent(inout)  :: fluid                         !
-!________________________________________________________________________!
+!                                                                        
+  subroutine solver__advance(t,dt,fluid)                                 
+    real(DP), intent(inout)             :: t                             
+    real(DP), intent(in)                :: dt                            
+    type(field__fluid_), intent(inout)  :: fluid                         
+!________________________________________________________________________
 !
 !   The classical 4-step, 4-th order Runge-Kutta method.
 !________________________________________________________________________/
@@ -428,13 +428,13 @@ contains
 
 
 !_______________________________________________________________public___
-!                                                                        !
-  subroutine solver__diagnosis(nloop,time,fluid,karte)                   !
-    integer,             intent(in)    :: nloop                          !
-    real(DP),            intent(in)    :: time                           !
-    type(field__fluid_), intent(in)    :: fluid                          !
-    integer,             intent(inout) :: karte                          !
-!________________________________________________________________________!
+!                                                                        
+  subroutine solver__diagnosis(nloop,time,fluid,karte)                   
+    integer,             intent(in)    :: nloop                          
+    real(DP),            intent(in)    :: time                           
+    type(field__fluid_), intent(in)    :: fluid                          
+    integer,             intent(inout) :: karte                          
+!________________________________________________________________________
 !
     integer,  parameter :: SKIP = 100
     real(DP), parameter :: ABNORMALLY_LARGE = 1.e5_DP
@@ -505,10 +505,10 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine solver__initialize(fluid)                                   !
-    type(field__fluid_), intent(out) :: fluid                            !
-!________________________________________________________________________!
+!                                                                        
+  subroutine solver__initialize(fluid)                                   
+    type(field__fluid_), intent(out) :: fluid                            
+!________________________________________________________________________
 !
     real(DP) :: kappa
 
@@ -537,12 +537,12 @@ contains
 
 
 !_______________________________________________________________public___
-!                                                                        !
-  function solver__set_time_step(nloop,fluid)                            !
-    integer,             intent(in) :: nloop                             !
-    type(field__fluid_), intent(in) :: fluid                             !
-    real(DP)                        :: solver__set_time_step             !
-!________________________________________________________________________!
+!                                                                        
+  function solver__set_time_step(nloop,fluid)                            
+    integer,             intent(in) :: nloop                             
+    type(field__fluid_), intent(in) :: fluid                             
+    real(DP)                        :: solver__set_time_step             
+!________________________________________________________________________
 !
 !   set dt by the CFL condition.
 !________________________________________________________________________/

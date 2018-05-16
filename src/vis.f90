@@ -28,7 +28,7 @@ module vis
   public :: vis__initialize,  &
             vis__write
 
-  integer :: Kvs_nx  ! mesh size of the avs data
+  integer :: Kvs_nx  ! mesh size of the kvs data
   integer :: Kvs_ny
   integer :: Kvs_nz
   integer :: grid_size
@@ -41,7 +41,7 @@ module vis
   real(SP), dimension(:,:,:), allocatable :: Kvs_ps  ! Pressure
   real(SP), dimension(:,:,:), allocatable :: Kvs_en  ! Enstrophy
 
-  !--- Coordinates information for AVS field data ---
+  !--- Coordinates information for KVS field data ---
 ! real(SP), dimension(:,:,:), allocatable :: Kvs_coord_x
 ! real(SP), dimension(:,:,:), allocatable :: Kvs_coord_y
 ! real(SP), dimension(:,:,:), allocatable :: Kvs_coord_z
@@ -95,11 +95,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine make_single_precision_field(vel,ps)                         !
-    type(field__vector3d_),        intent(in) :: vel                     !
-    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                      !
-!________________________________________________________________________!
+!
+  subroutine make_single_precision_field(vel,ps)                         
+    type(field__vector3d_),        intent(in) :: vel                    
+    real(DP), dimension(NX,NY,NZ), intent(in) :: ps                    
+!________________________________________________________________________
 !
     type(field__vector3d_)        :: vor   ! vorticity
     real(DP), dimension(NX,NY,NZ) :: enstrophy
@@ -121,11 +121,11 @@ contains
 
 
 !_______________________________________________________________private__
-!                                                                        !
-  subroutine output(nth_call, nloop)                                     !
-    character(len=3), intent(in) :: nth_call                             !
-    integer,          intent(in) :: nloop                                !
-!________________________________________________________________________!
+! 
+  subroutine output(nth_call, nloop)                                     
+    character(len=3), intent(in) :: nth_call                            
+    integer,          intent(in) :: nloop                              
+!________________________________________________________________________
 !
     logical :: firsttime = .true.              ! Automatic save attribute.
 
@@ -156,9 +156,9 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine vis__initialize                                             !
-!________________________________________________________________________!
+!
+  subroutine vis__initialize                                             
+!________________________________________________________________________
 !
 !  We define the AVS coordinates as the so-called 'irregular',
 !  since my module 'gavs' accepts only this grid system.
@@ -211,12 +211,12 @@ contains
 
 
 !________________________________________________________________public__
-!                                                                        !
-  subroutine vis__write(nloop,time,fluid)                                !
-    integer,             intent(in) :: nloop                             !
-    real(DP),            intent(in) :: time                              !
-    type(field__fluid_), intent(in) :: fluid                             !
-!________________________________________________________________________!
+!
+  subroutine vis__write(nloop,time,fluid)                               
+    integer,             intent(in) :: nloop                           
+    real(DP),            intent(in) :: time                           
+    type(field__fluid_), intent(in) :: fluid                         
+!________________________________________________________________________
 !
     type(field__vector3d_) :: vel
 
