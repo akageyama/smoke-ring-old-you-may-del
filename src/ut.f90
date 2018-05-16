@@ -9,6 +9,7 @@
 ! ut.f90
 !     2008.06.02: Developed by Akira Kageyama. Copied from kindanb.
 !     2018.04.12: Copied from boxfluid.
+!     2018.05.16: Added ut__int_to_str7.
 !-----------------------------------------------------------------------------
 
 module ut
@@ -20,7 +21,8 @@ module ut
   private
   public :: ut__assert,                 &
             ut__fatal,                  &
-            ut__i2c3,                   &
+            ut__int_to_str3,            &
+            ut__int_to_str7,            &
             ut__message
 
   interface ut__message
@@ -250,7 +252,7 @@ contains
 
 !________________________________________________________________public__
 !
-  function ut__i2c3(i) result(str3)
+  function ut__int_to_str3(i) result(str3)
     integer, intent(in) :: i
     character(len=3)    :: str3
 !________________________________________________________________________
@@ -265,6 +267,27 @@ contains
        write(str3,'(i3.3)') i
     end if
 
-  end function ut__i2c3
+  end function ut__int_to_str3
+
+
+
+!________________________________________________________________public__
+!
+  function ut__int_to_str7(i) result(str7)
+    integer, intent(in) :: i
+    character(len=7)    :: str7
+!________________________________________________________________________
+!  Convert an integer into 7 characters.
+!             e.g., i=12345 --> str7="0012345"
+!________________________________________________________________________/
+!
+
+    if ( i>9999999 ) then
+       str7 = 'XXXXXXX'
+    else
+       write(str7,'(i7.7)') i
+    end if
+
+  end function ut__int_to_str7
 
 end module ut
