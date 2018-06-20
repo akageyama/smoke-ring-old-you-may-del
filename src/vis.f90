@@ -11,16 +11,16 @@
 !-----------------------------------------------------------------------------
 
 
-module vis
+module vis_m
 !*****************************************************************************
 ! MODULE VIS                                             VISUALIZE DATA BY KVS
 !*****************************************************************************
-  use grid
-  use ut
-  use debug
-  use field
-  use solver
-  use namelist
+  use grid_m
+  use ut_m
+  use debug_m
+  use field_m
+  use solver_m
+  use namelist_m
   use iso_c_binding
   implicit none
 
@@ -252,4 +252,4 @@ contains
 
   end subroutine vis__apply
 
-end module vis
+end module vis_m

@@ -11,16 +11,16 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module solver
+module solver_m
 !*****************************************************************************
 ! MODULE SOLVER                             4TH RUNGE-KUTTA INTEGRATION METHOD
 !*****************************************************************************
-  use constants
-  use grid
-  use ut
-  use namelist
-  use field
-  use debug
+  use constants_m
+  use grid_m
+  use ut_m
+  use namelist_m
+  use field_m
+  use debug_m
   implicit none
 
   private
@@ -596,4 +596,4 @@ contains
 
   end function solver__set_time_step
 
-end module solver
+end module solver_m

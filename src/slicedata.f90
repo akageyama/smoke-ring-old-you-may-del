@@ -11,15 +11,15 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module slicedata
+module slicedata_m
 !*****************************************************************************
 ! MODULE SLICEDATA                                    Generate 2-D Sliced Data
 !*****************************************************************************
-  use ut
-  use field
-  use namelist
-  use debug
-  use solver
+  use ut_m
+  use field_m
+  use namelist_m
+  use debug_m
+  use solver_m
   implicit none
 
   private
@@ -134,4 +134,4 @@ contains
 
   end subroutine slicedata__write
 
-end module slicedata
+end module slicedata_m

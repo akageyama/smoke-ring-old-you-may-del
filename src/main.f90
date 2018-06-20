@@ -32,22 +32,22 @@
 !!     2008.06.02: Developed by Akira Kageyama. kage@jamstec.go.jp.
 !!-----------------------------------------------------------------------------
 
-program main
+program main_m
 !=============================================================================
 ! PROGAM MAIN                BOX-FLUID: A simple sample 3D fluid solver by FDM
 !=============================================================================
   !                                    Akira Kageyama (kage@port.kobe-u.ac.jp)
   !---------------------------------------------------------------------------
-  use constants             !                              numerical constants
-  use ut                    !                                utility functions
-  use namelist              !                                   namelis loader
-  use debug                 !                                    for debugging
-  use grid                  !                                        grid mesh
-  use field                 !                   field operators and operations
-  use vis                   !                            visualize data by kvs
-  use slicedata             !                         generate 2-d sliced data
-  use solver                !         4th order runge-kutta integration method
-  implicit none             !-------------------------------------------------
+  use constants_m             !                              numerical constants
+  use ut_m                    !                                utility functions
+  use namelist_m              !                                   namelis loader
+  use debug_m                 !                                    for debugging
+  use grid_m                  !                                        grid mesh
+  use field_m                 !                   field operators and operations
+  use vis_m                   !                            visualize data by kvs
+  use slicedata_m             !                         generate 2-d sliced data
+  use solver_m                !         4th order runge-kutta integration method
+  implicit none               !-------------------------------------------------
 
   integer  :: nloop, karte=KARTE_FINE
   real(DP) :: dt, time
@@ -92,4 +92,4 @@ program main
      call ut__message('?',"Stopped at nloop = ",  nloop)
   end select
 
-end program main
+end program main_m

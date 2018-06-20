@@ -11,7 +11,7 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module constants
+module constants_m
 !*****************************************************************************
 ! MODULE CONSTANTS                                         Numerical Constants
 !*****************************************************************************
@@ -61,4 +61,4 @@ module constants
   ! << Used for strings >>
   integer, parameter :: TAG_STRING_LENGTH_MAX = 100
 
-end module constants
+end module constants_m

@@ -11,12 +11,12 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module field
+module field_m
 !*****************************************************************************
 ! MODULE FIELD                                  Field Operators and Operations
 !*****************************************************************************
-  use constants
-  use grid
+  use constants_m
+  use grid_m
   implicit none
 
   public
@@ -600,5 +600,5 @@ contains
 
   end function operator_vector_times_scalar
 
-end module field
+end module field_m
 

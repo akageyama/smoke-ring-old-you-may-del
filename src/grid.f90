@@ -11,13 +11,13 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module grid
+module grid_m
 !*****************************************************************************
 ! MODULE GRID                                                        Grid Mesh
 !*****************************************************************************
-  use constants
-  use ut
-  use debug
+  use constants_m
+  use ut_m
+  use debug_m
   implicit none
   private
   public :: & !<< type >>!
@@ -151,5 +151,5 @@ contains
 
   end subroutine grid__initialize
 
-end module grid
+end module grid_m
 

@@ -12,11 +12,11 @@
 !     2018.05.16: Added ut__int_to_str7.
 !-----------------------------------------------------------------------------
 
-module ut
+module ut_m
 !*****************************************************************************
 ! MODULE UT                                                  Utility Functions
 !*****************************************************************************
-  use constants
+  use constants_m
   implicit none
   private
   public :: ut__assert,                 &
@@ -290,4 +290,4 @@ contains
 
   end function ut__int_to_str7
 
-end module ut
+end module ut_m

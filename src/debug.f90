@@ -11,13 +11,13 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module debug
+module debug_m
 !*****************************************************************************
 ! MODULE DEBUG                                                   For Debugging
 !*****************************************************************************
-  use constants
-  use ut
-  use namelist
+  use constants_m
+  use ut_m
+  use namelist_m
   implicit none
 
   private
@@ -239,4 +239,4 @@ contains
 !==============
 
 
-end module debug
+end module debug_m

@@ -11,12 +11,12 @@
 !     2018.04.12: Copied from boxfluid.
 !-----------------------------------------------------------------------------
 
-module namelist
+module namelist_m
 !*****************************************************************************
 ! MODULE NAMELIST                                              Namelist Loader
 !*****************************************************************************
-  use constants
-  use ut
+  use constants_m
+  use ut_m
   implicit none
   private
   public :: & !< routines >!
@@ -165,4 +165,4 @@ contains
 
   end function namelist__string
 
-end module namelist
+end module namelist_m
